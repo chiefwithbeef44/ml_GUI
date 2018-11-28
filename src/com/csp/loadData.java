@@ -8,10 +8,12 @@ import java.io.IOException;
 
 public class loadData
 {
+    //loader for data from Weka package
     ArffLoader loader = new ArffLoader();
     FileHelper helper = new FileHelper();
 
     File dataLoaded;
+
     public File helpTrain()
     {
         helper.setFilePath("C:\\\\Users\\\\RoboKnights\\\\Documents\\\\AP_Compsci_P\\\\Machine_Learning\\\\train.arff");
@@ -20,9 +22,12 @@ public class loadData
     }
     public void trainData(File data)
     {
-        try {
+        try
+        {
             loader.setFile(data);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
@@ -34,9 +39,12 @@ public class loadData
     }
     public void testData(File data)
     {
-        try {
+        try
+        {
             loader.setFile(data);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
     }
