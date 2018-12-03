@@ -11,12 +11,6 @@ public class fileReader
 
     public void readFile(File file)
     {
-        try {
-            fileString = reader.getLineNo();
-        }catch (NullPointerException e){
-            e.getCause();
-            System.out.println(e);
-        }
-        System.out.println(fileString);
+
     }
 }
