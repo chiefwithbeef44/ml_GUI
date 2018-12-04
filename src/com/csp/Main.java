@@ -14,7 +14,11 @@ public class Main
         dataLoader.trainData(dataLoader.helpTrain());
         //put train split here
         trainFile = dataLoader.loader.retrieveFile();
-        reader.readFile(trainFile);
+        try {
+            reader.readFile(trainFile);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         dataLoader.testData(dataLoader.helpTest());
     }
 }
