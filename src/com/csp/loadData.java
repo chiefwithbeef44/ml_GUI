@@ -2,11 +2,10 @@ package com.csp;
 
 import weka.core.FileHelper;
 import weka.core.converters.ArffLoader;
-import java.util.Scanner;
+
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.Scanner;
 
 public class loadData
 {
@@ -14,9 +13,6 @@ public class loadData
     ArffLoader loader = new ArffLoader();
     FileHelper helper = new FileHelper();
     File dataLoaded;
-
-    public Path trainPath = Paths.get("train.arff");
-    public Path testPath = Paths.get("test.arff");
 
     public String filePath_1;
     public String filePath_2;
