@@ -2,11 +2,9 @@ package com.csp;
 
 import weka.core.FileHelper;
 import weka.core.converters.ArffLoader;
-
-import java.io.BufferedReader;
+import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -20,29 +18,21 @@ public class loadData
     public Path trainPath = Paths.get("train.arff");
     public Path testPath = Paths.get("test.arff");
 
-    public static class cmd
+    public String filePath_1;
+    public String filePath_2;
+    public void inputPath()
     {
-        public String find(Path path) throws Exception
-        {
-            ProcessBuilder builder = new ProcessBuilder
-                    ("cmd.exe", "dir " + path.toString() + "/s");
-            builder.redirectErrorStream(true);
-            Process p = builder.start();
-            BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line = null;
-            while(p.isAlive()) {
-                line = r.readLine();
-                if (line == null) {
-                    break;
-                }
-                System.out.println(line);
-            }
-            return line;
-        }
-    }
 
+    Scanner reader = new Scanner(System.in);
+    System.out.println("Enter the filepath of train.arff: ");
+    filePath_1 = reader.nextLine();
+    System.out.println("Enter the filepath of test.arff: ");
+    filePath_2 = reader.nextLine();
+    reader.close();
+    }
     public File helpTrain()
     {
+        helper.setFilePath(filePath_1);
         dataLoaded = helper.getFile();
         return dataLoaded;
     }
@@ -59,6 +49,7 @@ public class loadData
     }
     public File helpTest()
     {
+        helper.setFilePath(filePath_2);
         dataLoaded = helper.getFile();
         return dataLoaded;
     }
