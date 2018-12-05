@@ -12,7 +12,8 @@ public class fileReader
 
     private BufferedReader reader;
 
-    public void readFile(File file) throws IOException {
+    public void readFile(File file) throws IOException
+    {
         ArffLoader.ArffReader arffReader;
         arffReader = new ArffLoader.ArffReader(reader);
         Instances data;

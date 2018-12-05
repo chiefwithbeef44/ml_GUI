@@ -11,28 +11,50 @@ public class Main
 
     public static void main(String[] args)
     {
-        dataLoader.inputPath();
+        //sets temporary system-dependent path found in loadData
+        dataLoader.setTempPath();
+
+        //tries to create the file variable for the train file, and tests to see if it is there and can be read
         try
         {
-            dataLoader.trainData(dataLoader.helpTrain());
-        } catch (IOException e)
+            dataLoader.train = new File(dataLoader.trainPath);
+        }catch (NullPointerException e)
         {
             e.printStackTrace();
         }
-        //put train split here
-        trainFile = dataLoader.loader.retrieveFile();
+        System.out.println("train can be read: "+dataLoader.train.canRead());
+        System.out.println("train exists: " + dataLoader.train.exists());
+
+        //tries to create the file variable for the test file, and tests to see if it is there and can be read
         try
         {
-            reader.readFile(trainFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try
-        {
-            dataLoader.testData(dataLoader.helpTest());
-        } catch (IOException e)
+            dataLoader.test = new File(dataLoader.testPath);
+        }catch (NullPointerException e)
         {
             e.printStackTrace();
         }
+        System.out.println("test can be read: "+dataLoader.test.canRead());
+        System.out.println("test exists: " + dataLoader.test.exists());
+
+        //tries to invoke the readFile function to get the instances
+        try
+        {
+            reader.readFile(dataLoader.test);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        //tries to invoke readFile  function to get the instances
+        try
+        {
+            reader.readFile(dataLoader.test);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }

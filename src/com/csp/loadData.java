@@ -14,34 +14,43 @@ public class loadData
     FileHelper helper = new FileHelper();
     File dataLoaded;
 
-    public String filePath_1;
-    public String filePath_2;
+    public String trainPath;
+    public String testPath;
+    public File train;
+    public File test;
+    
     public void inputPath()
     {
 
     Scanner reader = new Scanner(System.in);
     System.out.println("Enter the filepath of train.arff: ");
-    filePath_1 = reader.nextLine();
+    trainPath = reader.nextLine();
     System.out.println("Enter the filepath of test.arff: ");
-    filePath_2 = reader.nextLine();
+    testPath = reader.nextLine();
     reader.close();
+    }
+    public void setTempPath() {
+        trainPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
+        testPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\test.arff";
     }
     public File helpTrain()
     {
-        helper.setFilePath(filePath_1);
+        helper.setFilePath(trainPath);
         dataLoaded = helper.getFile();
         return dataLoaded;
     }
-    public void trainData(File data) throws IOException {
+    public void trainData(File data) throws IOException
+    {
             loader.setFile(data);
     }
     public File helpTest()
     {
-        helper.setFilePath(filePath_2);
+        helper.setFilePath(testPath);
         dataLoaded = helper.getFile();
         return dataLoaded;
     }
-    public void testData(File data) throws IOException {
+    public void testData(File data) throws IOException
+    {
         loader.setFile(data);
     }
 }
