@@ -25,4 +25,8 @@ public class fileReader
         data.setClassIndex(data.numAttributes() - 1);
         System.out.print("successfully set classIndex // fileReader:25");
     }
+    public void printData(Instances data)
+    {
+        System.out.println(data);
+    }
 }

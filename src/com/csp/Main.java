@@ -59,5 +59,12 @@ public class Main
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //attempts to print the data
+        try {
+            reader.printData(dataLoader.loader.getDataSet());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
