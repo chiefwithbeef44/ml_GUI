@@ -1,12 +1,12 @@
 package com.csp;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Main
 {
     static fileReader reader = new fileReader();
     static loadData dataLoader = new loadData();
-    public static File trainFile;
 
     public static void main(String[] args)
     {
@@ -39,7 +39,25 @@ public class Main
         System.out.println("test file exists: " + dataLoader.test.exists());
         System.out.println("test file path: "+dataLoader.test.getAbsolutePath());
 
-        reader.readTest();
-        reader.readTrain();
+        //sets files in loadData
+        try {
+            dataLoader.trainData(dataLoader.helpTrain());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //tests read of train file
+        try {
+            reader.readFile(dataLoader.train);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //tests read of test file
+        try {
+            reader.readFile(dataLoader.test);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
