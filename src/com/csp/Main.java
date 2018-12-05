@@ -23,7 +23,10 @@ public class Main
             e.printStackTrace();
         }
         System.out.println("train can be read: "+dataLoader.train.canRead());
-        System.out.println("train exists: " + dataLoader.train.exists());
+        System.out.println("train file exists: " + dataLoader.train.exists());
+        System.out.println("train file path: "+dataLoader.train.getAbsolutePath());
+        //prints a separator
+        System.out.println("-------------------------------------------------------------------------------------------");
 
         //tries to create the file variable for the test file, and tests to see if it is there and can be read
         try
@@ -34,27 +37,17 @@ public class Main
             e.printStackTrace();
         }
         System.out.println("test can be read: "+dataLoader.test.canRead());
-        System.out.println("test exists: " + dataLoader.test.exists());
-
-        //tries to invoke the readFile function to get the instances
-        try
-        {
-            reader.readFile(dataLoader.test);
-        }
-        catch (IOException e)
-        {
+        System.out.println("test file exists: " + dataLoader.test.exists());
+        System.out.println("test file path: "+dataLoader.test.getAbsolutePath());
+        try {
+            reader.readFile(dataLoader.train);
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
-        //tries to invoke readFile  function to get the instances
-        try
-        {
+        try {
             reader.readFile(dataLoader.test);
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
