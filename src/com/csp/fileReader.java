@@ -9,18 +9,13 @@ import java.io.IOException;
 
 public class fileReader
 {
-    private BufferedReader reader;
-    loadData dataLoader;
 
-    public void readFile(File file)
-    {
-        ArffLoader.ArffReader arffReader = null;
-        try {
-            arffReader = new ArffLoader.ArffReader(reader);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Instances data = null;
+    private BufferedReader reader;
+
+    public void readFile(File file) throws IOException {
+        ArffLoader.ArffReader arffReader;
+        arffReader = new ArffLoader.ArffReader(reader);
+        Instances data;
         data = arffReader.getData();
         System.out.println(arffReader.getStructure());
         System.out.println(data.toString());

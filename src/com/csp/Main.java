@@ -1,6 +1,7 @@
 package com.csp;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Main
 {
@@ -11,14 +12,27 @@ public class Main
     public static void main(String[] args)
     {
         dataLoader.inputPath();
-        dataLoader.trainData(dataLoader.helpTrain());
-        //put train split here
-        trainFile = dataLoader.loader.retrieveFile();
-        try {
-            reader.readFile(trainFile);
-        } catch (NullPointerException e) {
+        try
+        {
+            dataLoader.trainData(dataLoader.helpTrain());
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
-        dataLoader.testData(dataLoader.helpTest());
+        //put train split here
+        trainFile = dataLoader.loader.retrieveFile();
+        try
+        {
+            reader.readFile(trainFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try
+        {
+            dataLoader.testData(dataLoader.helpTest());
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

@@ -32,16 +32,8 @@ public class loadData
         dataLoaded = helper.getFile();
         return dataLoaded;
     }
-    public void trainData(File data)
-    {
-        try
-        {
+    public void trainData(File data) throws IOException {
             loader.setFile(data);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
     }
     public File helpTest()
     {
@@ -49,15 +41,7 @@ public class loadData
         dataLoaded = helper.getFile();
         return dataLoaded;
     }
-    public void testData(File data)
-    {
-        try
-        {
-            loader.setFile(data);
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
+    public void testData(File data) throws IOException {
+        loader.setFile(data);
     }
 }
