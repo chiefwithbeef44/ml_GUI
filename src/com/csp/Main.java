@@ -1,7 +1,6 @@
 package com.csp;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Main
 {
@@ -39,15 +38,8 @@ public class Main
         System.out.println("test can be read: "+dataLoader.test.canRead());
         System.out.println("test file exists: " + dataLoader.test.exists());
         System.out.println("test file path: "+dataLoader.test.getAbsolutePath());
-        try {
-            reader.readFile(dataLoader.train);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            reader.readFile(dataLoader.test);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        reader.readTest();
+        reader.readTrain();
     }
 }
