@@ -1,5 +1,9 @@
 package com.csp;
 
+import com.csp.clusterer_classifier.dataClusterer;
+import com.csp.reader_loader.fileReader;
+import com.csp.reader_loader.loadData;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -70,7 +74,10 @@ public class Main
 //            e.printStackTrace();
 //        }
 
-        clusterer.clusterer(trainFile);
-
+        try {
+            clusterer.clusterer(reader.readFile(trainFile));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

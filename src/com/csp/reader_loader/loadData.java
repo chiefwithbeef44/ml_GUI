@@ -1,4 +1,4 @@
-package com.csp;
+package com.csp.reader_loader;
 
 import weka.core.FileHelper;
 import weka.core.converters.ArffLoader;
