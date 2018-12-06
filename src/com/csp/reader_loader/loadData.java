@@ -30,8 +30,8 @@ public class loadData
     reader.close();
     }
     public void setTempPath() {
-        trainPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
-        testPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\test.arff";
+        trainPath = "E:\\train.arff";
+        testPath = "E:\\test.arff";
     }
     public File helpTrain()
     {
