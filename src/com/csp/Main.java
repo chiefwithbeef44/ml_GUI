@@ -5,8 +5,11 @@ import java.io.IOException;
 
 public class Main
 {
+    static dataClusterer clusterer = new dataClusterer();
     static fileReader reader = new fileReader();
     static loadData dataLoader = new loadData();
+    private static File testFile = dataLoader.helpTest();
+    private static File trainFile = dataLoader.helpTrain();
 
     public static void main(String[] args)
     {
@@ -60,11 +63,14 @@ public class Main
             e.printStackTrace();
         }
 
-        //attempts to print the data
-        try {
-            reader.printData(dataLoader.loader.getDataSet());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        //attempts to print the data
+//        try {
+//            reader.printData(dataLoader.loader.getDataSet());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        clusterer.clusterer(trainFile);
+
     }
 }

@@ -10,7 +10,7 @@ public class fileReader
     loadData loader;
     BufferedReader reader;
 
-    public void readFile(File file) throws IOException
+    public Instances readFile(File file) throws IOException
     {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         System.out.println("successfully instantiated BufferedReader // fileReader:15");
@@ -24,6 +24,7 @@ public class fileReader
         System.out.println("successfully assigned data var to .getData() // fileReader:23");
         data.setClassIndex(data.numAttributes() - 1);
         System.out.print("successfully set classIndex // fileReader:25");
+        return data;
     }
     public void printData(Instances data)
     {
