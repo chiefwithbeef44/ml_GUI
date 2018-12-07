@@ -1,6 +1,7 @@
 package com.csp;
 
 import com.csp.clusterer_classifier.dataClusterer;
+import com.csp.model.createModel;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
 
@@ -12,6 +13,7 @@ public class Main
     static dataClusterer clusterer = new dataClusterer();
     static fileReader reader = new fileReader();
     static loadData dataLoader = new loadData();
+    static createModel model = new createModel();
     private static File testFile = dataLoader.helpTest();
     private static File trainFile = dataLoader.helpTrain();
 
@@ -69,10 +71,12 @@ public class Main
             e.printStackTrace();
         }
 
+        //builds 10 clusters of data
         try {
-            clusterer.main(dataLoader.train);
+            clusterer.clusterFile(dataLoader.train);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(model.bayes.getCapabilities());
     }
 }

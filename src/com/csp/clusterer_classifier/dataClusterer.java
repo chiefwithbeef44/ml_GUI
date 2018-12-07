@@ -25,7 +25,7 @@ public class dataClusterer
         return inputReader;
     }
 
-    public void main(File file) throws Exception
+    public Instances clusterFile(File file) throws Exception
     {
         SimpleKMeans kmeans = new SimpleKMeans();
 
@@ -50,5 +50,32 @@ public class dataClusterer
             //System.out.printf("Instance %d -> Cluster %d \n", i, clusterNum);
             i++;
         }
+        return data;
+    }
+    public Instances clusterInstances(Instances instances) throws Exception
+    {
+        SimpleKMeans kmeans = new SimpleKMeans();
+
+        kmeans.setSeed(10);
+
+        //important parameter to set: preserver order, number of cluster.
+        kmeans.setPreserveInstancesOrder(true);
+        kmeans.setNumClusters(10);
+
+        Instances data = new Instances(instances);
+
+        kmeans.buildClusterer(data);
+
+        // This array returns the cluster number (starting with 0) for each instance
+        // The array has as many elements as the number of instances
+        int[] assignments = kmeans.getAssignments();
+
+        int i = 0;
+        for (int clusterNum : assignments)
+        {
+            //System.out.printf("Instance %d -> Cluster %d \n", i, clusterNum);
+            i++;
+        }
+        return data;
     }
 }
