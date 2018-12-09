@@ -77,6 +77,12 @@ public class Main
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(model.bayes.getCapabilities());
+
+        //builds a model of the clustered data
+        try {
+            model.createModel(reader.readFile(dataLoader.helpTrain()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
