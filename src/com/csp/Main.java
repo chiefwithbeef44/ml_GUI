@@ -5,6 +5,7 @@ import com.csp.model.createModel;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
 
+import org.w3c.dom.Element;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,9 +15,11 @@ public class Main
     static fileReader reader = new fileReader();
     static loadData dataLoader = new loadData();
     static createModel model = new createModel();
+
     private static File testFile = dataLoader.helpTest();
     private static File trainFile = dataLoader.helpTrain();
 
+    private static Element element;
     public static void main(String[] args)
     {
         //sets temporary system-dependent path found in loadData
