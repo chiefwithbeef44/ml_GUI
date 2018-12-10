@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class loadData
 {
     //loader for data from Weka package
-    ArffLoader loader = new ArffLoader();
-    FileHelper helper = new FileHelper();
-    File dataLoaded;
+    private ArffLoader loader = new ArffLoader();
+    private FileHelper helper = new FileHelper();
+    private File dataLoaded;
 
     public String trainPath;
     public String testPath;
@@ -29,7 +29,8 @@ public class loadData
     reader.close();
     }
 
-    public void setTempPath() {
+    public void setTempPath()
+    {
         trainPath = "E:\\train.arff";
         testPath = "E:\\test.arff";
     }

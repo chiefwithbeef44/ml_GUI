@@ -92,7 +92,7 @@ public class Main
 
         try {
             trainer.train(reader.readFile(dataLoader.helpTrain()));
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
