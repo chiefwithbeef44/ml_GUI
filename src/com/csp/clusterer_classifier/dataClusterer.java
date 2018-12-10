@@ -49,13 +49,7 @@ public class dataClusterer
         // This array returns the cluster number (starting with 0) for each instance
         // The array has as many elements as the number of instances
         int[] assignments = kmeans.getAssignments();
-
-        int i=0;
-        for(int clusterNum : assignments)
-        {
-            //System.out.printf("Instance %d -> Cluster %d \n", i, clusterNum);
-            i++;
-        }
+        //System.out.println(data.toString());
         return data;
     }
     public Instances clusterInstances(Instances instances) throws Exception

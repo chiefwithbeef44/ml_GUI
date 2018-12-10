@@ -1,23 +1,21 @@
 package com.csp;
 
 import com.csp.clusterer_classifier.dataClusterer;
-import com.csp.model.createModel;
-import com.csp.model.trainModel;
+import com.csp.model.Model;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Main
 {
     private static dataClusterer clusterer = new dataClusterer();
     private static fileReader reader = new fileReader();
     private static loadData dataLoader = new loadData();
-    private static createModel model = new createModel();
-    private static trainModel trainer = new trainModel();
-
+    private static Model model = new Model();
+    private static File trainFile = dataLoader.helpTrain();
+    private static File testFile = dataLoader.helpTest();
 
     public static void main(String[] args)
     {
@@ -81,16 +79,15 @@ public class Main
 
         //builds a model of the clustered data
         try {
-            model.modelMaker(reader.readFile(dataLoader.helpTrain()));
+            Model.CreateModel.create(reader.readFile(dataLoader.helpTrain()));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         try {
-            trainer.train(reader.readFile(dataLoader.helpTrain()));
+            Model.trainModel.train(reader.readFile(dataLoader.helpTrain()));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(Arrays.toString(trainer.outputs));
     }
 }

@@ -10,9 +10,8 @@ import java.io.IOException;
 
 public class fileReader
 {
-    loadData loader;
-    BufferedReader reader;
-    ArffLoader.ArffReader arff;
+    private BufferedReader reader;
+    private ArffLoader.ArffReader arff;
     public Instances readFile(File file) throws IOException
     {
         reader = new BufferedReader(new FileReader(file));
