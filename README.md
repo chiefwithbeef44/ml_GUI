@@ -11,9 +11,7 @@ For Use:
 7. Append 'test.arff'
 8. Wait
 Example: 
-"
-#Enter the filepath of train.arff: 
-#C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\train.arff
-#Enter the filepath of test.arff: 
-#C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\test.arff
-"
+# Enter the filepath of train.arff: 
+# C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\train.arff
+# Enter the filepath of test.arff: 
+# C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\test.arff
