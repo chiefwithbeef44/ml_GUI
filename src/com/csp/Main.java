@@ -77,9 +77,9 @@ public class Main
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-//
-//
-//        //builds a model of the clustered data
+
+
+        //builds a model of the clustered data
         try {
             model.create(reader.readFile(dataLoader.helpTrain()));
         } catch (IOException e) {

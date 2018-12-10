@@ -1,33 +1,40 @@
 package com.csp.model;
 
+
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import weka.classifiers.pmml.consumer.SupportVectorMachineModel;
+import weka.classifiers.pmml.producer.LogisticProducerHelper;
 import weka.core.Instances;
 import weka.core.pmml.MiningSchema;
-import weka.core.pmml.jaxbbindings.*;
+import weka.core.pmml.jaxbbindings.PMML;
+import weka.core.pmml.jaxbbindings.SupportVectorMachine;
+import weka.core.pmml.jaxbbindings.SupportVectors;
 
 import java.math.BigInteger;
 
 public class Model
 {
-     public Node node;
      private SupportVectorMachine svm = new SupportVectorMachine();
      private SupportVectors supportVectors = new SupportVectors();
      private SupportVectorMachineModel svmModel;
      private MiningSchema schema;
      public Element element;
-     public PMML pmml = new PMML();
+     private PMML pmml = new PMML();
+     double[][] par = new double[10][10];
+
         public  void create(Instances instances)
         {
-            node = element;
-            element = (Element) node;
-//            try {
-//                schema = new MiningSchema(element, instances, schema.getTransformationDictionary());
-//                svmModel = new SupportVectorMachineModel(element, instances, schema);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            par[0][0] = instances.kthSmallestValue(1, 1);
+            LogisticProducerHelper.toPMML(instances,instances,par,1);
+            pmml = LogisticProducerHelper.initPMML();
+            element = (Element);
+            System.out.println(element);
+            try {
+                schema = new MiningSchema(element, instances, schema.getTransformationDictionary());
+                svmModel = new SupportVectorMachineModel(element, instances, schema);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     
         public  void train(Instances instances)
