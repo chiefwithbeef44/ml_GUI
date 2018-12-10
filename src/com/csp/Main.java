@@ -5,26 +5,22 @@ import com.csp.model.createModel;
 import com.csp.model.trainModel;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
-import org.w3c.dom.Element;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Main
 {
-    static dataClusterer clusterer = new dataClusterer();
-    static fileReader reader = new fileReader();
-    static loadData dataLoader = new loadData();
-    static createModel model = new createModel();
-    static trainModel trainer = new trainModel();
+    private static dataClusterer clusterer = new dataClusterer();
+    private static fileReader reader = new fileReader();
+    private static loadData dataLoader = new loadData();
+    private static createModel model = new createModel();
+    private static trainModel trainer = new trainModel();
 
-    private static File testFile = dataLoader.helpTest();
-    private static File trainFile = dataLoader.helpTrain();
 
-    private static Element element;
     public static void main(String[] args)
     {
-        //sets temporary system-dependent path found in loadData
         dataLoader.setTempPath();
 
         //tries to create the file variable for the train file, and tests to see if it is there and can be read
@@ -95,5 +91,6 @@ public class Main
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(Arrays.toString(trainer.outputs));
     }
 }

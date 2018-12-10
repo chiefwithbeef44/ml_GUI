@@ -10,9 +10,9 @@ import java.io.FileReader;
 
 public class dataClusterer
 {
-    int seed = 10;
-    boolean preserveOrder = true;
-    public BufferedReader readDataFile(String filename)
+    private int seed = 10;
+    private boolean preserveOrder = true;
+    private BufferedReader readDataFile(String filename)
     {
         BufferedReader inputReader = null;
 
