@@ -2,10 +2,11 @@ package com.csp;
 
 import com.csp.clusterer_classifier.dataClusterer;
 import com.csp.model.createModel;
+import com.csp.model.trainModel;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
-
 import org.w3c.dom.Element;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -15,6 +16,7 @@ public class Main
     static fileReader reader = new fileReader();
     static loadData dataLoader = new loadData();
     static createModel model = new createModel();
+    static trainModel trainer = new trainModel();
 
     private static File testFile = dataLoader.helpTest();
     private static File trainFile = dataLoader.helpTrain();
@@ -83,7 +85,13 @@ public class Main
 
         //builds a model of the clustered data
         try {
-            model.createModel(reader.readFile(dataLoader.helpTrain()));
+            model.modelMaker(reader.readFile(dataLoader.helpTrain()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            trainer.train(reader.readFile(dataLoader.helpTrain()));
         } catch (IOException e) {
             e.printStackTrace();
         }
