@@ -44,8 +44,9 @@ public class dataClusterer
         System.out.println("bufferedreader is reading file // dataClusterer: 43");
         Instances data = new Instances(datafile);
         System.out.println("instantiates data // dataClusterer:45");
+        System.out.println("data is beginning clustering // dataClusterer: 48");
         kmeans.buildClusterer(data);
-        System.out.println("built cluster // dataClusterer:47");
+        System.out.println("built cluster // dataClusterer: 48");
         // This array returns the cluster number (starting with 0) for each instance
         // The array has as many elements as the number of instances
         int[] assignments = kmeans.getAssignments();

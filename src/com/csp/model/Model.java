@@ -1,38 +1,41 @@
 package com.csp.model;
 
 
+import com.sun.org.apache.bcel.internal.util.ClassLoader;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 import weka.classifiers.pmml.consumer.SupportVectorMachineModel;
-import weka.classifiers.pmml.producer.LogisticProducerHelper;
 import weka.core.Instances;
 import weka.core.pmml.MiningSchema;
-import weka.core.pmml.jaxbbindings.PMML;
 import weka.core.pmml.jaxbbindings.SupportVectorMachine;
 import weka.core.pmml.jaxbbindings.SupportVectors;
 
+import javax.xml.parsers.DocumentBuilder;
+import java.io.IOException;
 import java.math.BigInteger;
 
 public class Model
 {
+
      private SupportVectorMachine svm = new SupportVectorMachine();
      private SupportVectors supportVectors = new SupportVectors();
      private SupportVectorMachineModel svmModel;
      private MiningSchema schema;
-     public Element element;
-     private PMML pmml = new PMML();
-     double[][] par = new double[10][10];
+     private ClassLoader loader = new ClassLoader();
 
-        public  void create(Instances instances)
-        {
-            par[0][0] = instances.kthSmallestValue(1, 1);
-            LogisticProducerHelper.toPMML(instances,instances,par,1);
-            pmml = LogisticProducerHelper.initPMML();
-            element = (Element);
-            System.out.println(element);
-            try {
+     private Element element;
+
+    public  void create(Instances instances) throws IOException, SAXException
+    {
+        assert instances!=null;
+            DocumentBuilder builder = null;
+            element = (Element) builder.parse(instances.toString());
+            try
+            {
                 schema = new MiningSchema(element, instances, schema.getTransformationDictionary());
                 svmModel = new SupportVectorMachineModel(element, instances, schema);
-            } catch (Exception e) {
+            } catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
@@ -45,7 +48,8 @@ public class Model
             supportVectors.setNumberOfSupportVectors(BigInteger.valueOf(10));
             svm.setSupportVectors(supportVectors);
 
-            while(i<42000){
+            while(i<42000)
+            {
                 try
                 {
                     svmModel.distributionForInstance(instances.get(i));
