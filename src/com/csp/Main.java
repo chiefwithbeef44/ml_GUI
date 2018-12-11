@@ -7,6 +7,7 @@ import com.csp.reader_loader.loadData;
 import org.xml.sax.SAXException;
 import weka.core.Instances;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 
@@ -79,7 +80,7 @@ public class Main
         //builds a model of the clustered data
         try {
             model.create(trainData);
-        } catch (IOException | SAXException e) {
+        } catch (IOException | SAXException | ParserConfigurationException e) {
             e.printStackTrace();
         }
         //
