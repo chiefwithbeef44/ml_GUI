@@ -8,6 +8,7 @@ import org.xml.sax.SAXException;
 import weka.classifiers.pmml.consumer.SupportVectorMachineModel;
 import weka.core.Instances;
 import weka.core.pmml.MiningSchema;
+import weka.core.pmml.jaxbbindings.Coefficients;
 import weka.core.pmml.jaxbbindings.SupportVectorMachine;
 import weka.core.pmml.jaxbbindings.SupportVectors;
 
@@ -16,6 +17,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.math.BigInteger;
+import java.util.Arrays;
 
 public class Model
 {
@@ -23,8 +25,8 @@ public class Model
      private SupportVectors supportVectors = new SupportVectors();
      private SupportVectorMachineModel svmModel;
      private MiningSchema schema;
-     private Element element;
-     Document doc;
+     private Document doc;
+     private Coefficients coefficients = new Coefficients();
 
      public  void create(Instances instances) throws IOException, SAXException, ParserConfigurationException {
          assert instances!=null;
@@ -32,7 +34,7 @@ public class Model
          DocumentBuilder builder = documentBuilderFactory.newDocumentBuilder();
          assert builder != null;
          doc = builder.parse(instances.toString());
-             element = (Element) doc;
+         Element element = (Element) doc;
              try
              {
                  schema = new MiningSchema(element, instances, schema.getTransformationDictionary());
@@ -49,12 +51,14 @@ public class Model
          int i = 0;
          supportVectors.setNumberOfAttributes(numAttributes);
          supportVectors.setNumberOfSupportVectors(BigInteger.valueOf(10));
-         svm.setSupportVectors(supportVectors);
-         while(i<42000)
+         while(i<=41999)
          {
              try
              {
+                 svm.setSupportVectors(supportVectors);
+                 svm.setTargetCategory("label");
                  svmModel.distributionForInstance(instances.get(i));
+                 System.out.println(Arrays.toString(svmModel.distributionForInstance(instances.get(i))));
              } catch (Exception e)
              {
                  e.printStackTrace();

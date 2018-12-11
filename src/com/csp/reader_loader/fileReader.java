@@ -10,13 +10,11 @@ import java.io.IOException;
 
 public class fileReader
 {
-    private BufferedReader reader;
-    private ArffLoader.ArffReader arff;
     public Instances readFile(File file) throws IOException
     {
-        reader = new BufferedReader(new FileReader(file));
+        BufferedReader reader = new BufferedReader(new FileReader(file));
         System.out.println("successfully instantiated BufferedReader // fileReader:16");
-        arff = new ArffLoader.ArffReader(reader);
+        ArffLoader.ArffReader arff = new ArffLoader.ArffReader(reader);
         System.out.println("successfully instantiated the ArffReader // fileReader:18");
         Instances data;
         System.out.println("successfully created Instances var // fileReader:20");

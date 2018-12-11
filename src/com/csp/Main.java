@@ -18,11 +18,10 @@ public class Main
     private static loadData dataLoader = new loadData();
     private static Model model = new Model();
     private static Instances trainData;
+
     public static void main(String[] args)
     {
         dataLoader.inputPath();
-        File trainFile = dataLoader.helpTrain();
-        File testFile = dataLoader.helpTest();
 
         //tries to create the file variable for the train file, and tests to see if it is there and can be read
 
