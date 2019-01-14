@@ -11,7 +11,6 @@ import weka.core.pmml.jaxbbindings.SupportVectorMachine;
 import weka.core.pmml.jaxbbindings.SupportVectors;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 public class Model
 {
@@ -29,10 +28,6 @@ public class Model
              {
                  schema = new MiningSchema(doc.createElement("label"), instances, schema.getTransformationDictionary());
                  svmModel = new SupportVectorMachineModel(doc.createElement("label"), instances, schema);
-                 svmModel.setPMMLVersion(doc);
-                 svmModel.setNumDecimalPlaces(0);
-                 svmModel.setBatchSize("10");
-                 svmModel.setCreatorApplication(doc);
 
              } catch (Exception e)
              {
@@ -43,7 +38,6 @@ public class Model
      public  void train(Instances instances)
      {
          BigInteger numAttributes = BigInteger.valueOf(785);
-         int i = 0;
          supportVectors.setNumberOfAttributes(numAttributes);
          supportVectors.setNumberOfSupportVectors(BigInteger.valueOf(10));
          svm.setSupportVectors(supportVectors);
@@ -51,19 +45,13 @@ public class Model
          coefficients.setAbsoluteValue(2.0);
          coefficients.setNumberOfCoefficients(numAttributes);
          svm.setCoefficients(coefficients);
-
-         while(i<=41999)
+         try
          {
-             try
-             {
-                 svmModel.buildClassifier(instances);
-                 double[] outputs = svmModel.distributionForInstance(instances.get(i));
-                 System.out.println(Arrays.toString(outputs));
-             } catch (Exception e)
-             {
-                 e.printStackTrace();
-             }
-             i++;
+             svmModel.buildClassifier(instances);
+             System.out.println("classifier built");
+         } catch (Exception e)
+         {
+             e.printStackTrace();
          }
      }
 }

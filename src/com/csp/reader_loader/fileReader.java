@@ -24,4 +24,19 @@ public class fileReader
         System.out.print("successfully set classIndex // fileReader:24");
         return data;
     }
+
+    public int[] checkIfNull(Instances instances)
+    {
+        int[] nullInstances = new int[instances.numInstances()];
+        for(int i = 0; i<instances.numAttributes(); i++ )
+        {
+            if(instances.get(i) == null)
+            {
+                nullInstances[i] = 1;
+            }else {
+                nullInstances[i] = 0;
+            }
+        }
+        return nullInstances;
+    }
 }
