@@ -4,10 +4,8 @@ import com.csp.clusterer_classifier.dataClusterer;
 import com.csp.model.Model;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
-import org.xml.sax.SAXException;
 import weka.core.Instances;
 
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 
@@ -21,7 +19,7 @@ public class Main
 
     public static void main(String[] args)
     {
-        dataLoader.inputPath();
+        dataLoader.setTempPath();
 
         //tries to create the file variable for the train file, and tests to see if it is there and can be read
 
@@ -77,11 +75,7 @@ public class Main
 
 
         //builds a model of the clustered data
-        try {
-            model.create(trainData);
-        } catch (IOException | SAXException | ParserConfigurationException e) {
-            e.printStackTrace();
-        }
+        model.create(trainData);
         //
         try {
             model.train(trainData);

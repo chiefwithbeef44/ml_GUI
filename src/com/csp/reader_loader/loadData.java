@@ -31,8 +31,8 @@ public class loadData
 
     public void setTempPath()
     {
-        trainPath = "E:\\train.arff";
-        testPath = "E:\\test.arff";
+        trainPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
+        testPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
     }
 
     public File helpTrain()

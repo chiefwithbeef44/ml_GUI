@@ -10,8 +10,6 @@ import java.io.FileReader;
 
 public class dataClusterer
 {
-    private int seed = 10;
-    private boolean preserveOrder = true;
     private BufferedReader readDataFile(String filename)
     {
         BufferedReader inputReader = null;
@@ -31,12 +29,14 @@ public class dataClusterer
         SimpleKMeans kmeans = new SimpleKMeans();
         System.out.println("instantiated simpleKMeans clusterer // dataClusterer:31");
 
+        int seed = 10;
         kmeans.setSeed(seed);
-        System.out.println("set KMeans seed to"+seed+"dataClusterer:34");
+        System.out.println("set KMeans seed to"+ seed +"dataClusterer:34");
 
         //important parameter to set: preserver order, number of cluster.
+        boolean preserveOrder = true;
         kmeans.setPreserveInstancesOrder(preserveOrder);
-        System.out.println("KMeans set to preserve order? " + preserveOrder );
+        System.out.println("KMeans set to preserve order? " + preserveOrder);
         kmeans.setNumClusters(10);
         System.out.println("set num of clusters to 10 // dataClusterer:40");
 
