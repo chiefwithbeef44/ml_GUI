@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * @author chiefwithbeef44
+ */
 public class fileReader
 {
     public Instances readFile(File file) throws IOException

@@ -9,6 +9,10 @@ import weka.core.Instances;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * @author chiefwithbeef44
+ */
+
 public class Main
 {
     private static dataClusterer clusterer = new dataClusterer();

@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+/**
+ * @author chiefwithbeef44
+ */
 public class dataClusterer
 {
     private BufferedReader readDataFile(String filename)
@@ -17,7 +20,8 @@ public class dataClusterer
         try
         {
             inputReader = new BufferedReader(new FileReader(filename));
-        } catch (FileNotFoundException ex) {
+        } catch (FileNotFoundException ex)
+        {
             System.err.println("File not found: " + filename);
         }
 
