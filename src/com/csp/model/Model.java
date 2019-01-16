@@ -1,23 +1,31 @@
 package com.csp.model;
 
-import weka.classifiers.Evaluation;
 import weka.classifiers.functions.SMO;
+import weka.classifiers.functions.supportVector.RBFKernel;
 import weka.core.Instances;
+import weka.filters.unsupervised.attribute.Normalize;
 
 public class Model
 {
     private SMO smo = new SMO();
-    private Evaluation eval;
+    private Instances train;
+    private Instances test;
+    private Normalize norm = new Normalize();
 
-    public  void create(Instances instances)
-    {
-
+    public Model(Instances train, Instances test) throws Exception
+        {
+        norm.setInputFormat(test);
+        this.test = Normalize.useFilter(test,norm);
+        norm.setInputFormat(train);
+        this.train = Normalize.useFilter(train, norm);
+        smo.setKernel(new RBFKernel(train, 1, 0.015625));
+        smo.setC(8.0);
     }
 
-    public  void train(Instances instances) throws Exception
+    public  void create() throws Exception
     {
-        instances.setClassIndex(instances.numAttributes()-1);
-        eval = new Evaluation(instances);
-        smo.buildClassifier(instances);
-     }
+            System.out.println("Model has begun creation // Model: 23");
+            smo.buildClassifier(train);
+            System.out.println("Model created! // Model: 26");
+    }
 }

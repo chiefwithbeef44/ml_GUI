@@ -14,8 +14,9 @@ public class Main
     private static dataClusterer clusterer = new dataClusterer();
     private static fileReader reader = new fileReader();
     private static loadData dataLoader = new loadData();
-    private static Model model = new Model();
+    private static Model model;
     private static Instances trainData;
+    private static Instances testData;
 
     public static void main(String[] args)
     {
@@ -46,38 +47,57 @@ public class Main
         System.out.println("test file path: "+dataLoader.test.getAbsolutePath());
 
         //sets files in loadData
-        try {
+        try
+        {
             dataLoader.trainData(dataLoader.helpTrain());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //tests read of train file
-        try {
+        try
+        {
             reader.readFile(dataLoader.train);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         //tests read of test file
-        try {
+        try
+        {
             reader.readFile(dataLoader.test);
         } catch (IOException e) {
             e.printStackTrace();
         }
 //        builds 10 clusters of data
-        try {
+        try
+        {
             trainData = clusterer.clusterFile(dataLoader.train);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-//        builds a model of the clustered data
-        try {
-            model.train(trainData);
+        try
+        {
+            testData = clusterer.clusterFile(dataLoader.test);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try
+        {
+            model = new Model(trainData, testData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        builds a model of the clustered data
+        try
+        {
+            model.create();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }
