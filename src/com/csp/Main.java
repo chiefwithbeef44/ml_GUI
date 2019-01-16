@@ -8,7 +8,6 @@ import weka.core.Instances;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class Main
 {
@@ -66,22 +65,19 @@ public class Main
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(Arrays.toString(reader.checkIfNull(trainData)));
-        //builds 10 clusters of data
-//        try {
-//            trainData = clusterer.clusterFile(dataLoader.train);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//        builds 10 clusters of data
+        try {
+            trainData = clusterer.clusterFile(dataLoader.train);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
-        //builds a model of the clustered data
-//        model.create(trainData);
-//        //
-//        try {
-//            model.train(trainData);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+//        builds a model of the clustered data
+        try {
+            model.train(trainData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

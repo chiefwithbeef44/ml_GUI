@@ -27,10 +27,11 @@ public class fileReader
 
     public int[] checkIfNull(Instances instances)
     {
+        assert instances != null;
         int[] nullInstances = new int[instances.numInstances()];
         for(int i = 0; i<instances.numAttributes(); i++ )
         {
-            if(instances.get(i) == null)
+            if(instances.get(i).toDoubleArray() == null)
             {
                 nullInstances[i] = 1;
             }else {
