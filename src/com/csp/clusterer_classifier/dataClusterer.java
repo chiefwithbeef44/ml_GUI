@@ -11,6 +11,7 @@ import java.io.FileReader;
 /**
  * @author chiefwithbeef44
  */
+
 public class dataClusterer
 {
     private BufferedReader readDataFile(String filename)
