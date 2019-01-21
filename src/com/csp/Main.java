@@ -1,12 +1,11 @@
 package com.csp;
 
-import com.csp.model.Model;
+import com.csp.model.KNNModel;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
 import weka.core.Instances;
 
 import java.io.File;
-import java.util.Arrays;
 
 /**
  * @author chiefwithbeef44
@@ -16,7 +15,7 @@ public class Main
 {
     private static fileReader reader = new fileReader();
     private static loadData dataLoader = new loadData();
-    private static Model model;
+    private static KNNModel model;
     private static Instances trainData;
     private static Instances testData;
     private static double[] output = new double[42001];
@@ -37,12 +36,20 @@ public class Main
         System.out.println("test file exists: " + dataLoader.test.exists());
         System.out.println("test file can be written to: "+ dataLoader.test.canWrite());
         System.out.println("test file path: "+dataLoader.test.getAbsolutePath());
-        dataLoader.trainData(dataLoader.helpTrain());
+
         trainData = reader.readFile(dataLoader.train);
         testData = reader.readFile(dataLoader.test);
-        model = new Model(trainData, testData);
+
+        model = new KNNModel(trainData, testData);
         model.create();
+
 		output = model.train();
-		System.out.println(Arrays.toString(output));
+		for(double d: output)
+		{
+			if(d!=0.0)
+			{
+				System.out.println(d);
+			}
+		}
     }
 }

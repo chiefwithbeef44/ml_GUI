@@ -1,10 +1,8 @@
 package com.csp.reader_loader;
 
 import weka.core.FileHelper;
-import weka.core.converters.ArffLoader;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -14,14 +12,10 @@ import java.util.Scanner;
 public class loadData
 {
     //loader for data from Weka package
-    private ArffLoader loader = new ArffLoader();
     private FileHelper helper = new FileHelper();
-    private File dataLoaded;
 
     public String trainPath;
     public String testPath;
-    public File train;
-    public File test;
     
     public void inputPath()
     {
@@ -39,27 +33,11 @@ public class loadData
         testPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
     }
 
-    public File helpTrain()
+    public File getFile(String filepath)
     {
-        helper.setFilePath(trainPath);
-        dataLoaded = helper.getFile();
-        return dataLoaded;
+        helper.setFilePath(filepath);
+        return helper.getFile();
     }
-
-    public void trainData(File data) throws IOException
-    {
-            loader.setFile(data);
-    }
-
-    public File helpTest()
-    {
-        helper.setFilePath(testPath);
-        dataLoaded = helper.getFile();
-        return dataLoaded;
-    }
-
-    public void testData(File data) throws IOException
-    {
-        loader.setFile(data);
-    }
+    public File train = getFile(trainPath);
+    public File test = getFile(testPath);
 }

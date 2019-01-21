@@ -16,7 +16,6 @@ public class fileReader
 {
     public Instances readFile(File file) throws IOException
     {
-    	System.out.println("-------------------------------------------------------------------------------------------");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         System.out.println("successfully instantiated BufferedReader // fileReader:19");
         ArffLoader.ArffReader arff = new ArffLoader.ArffReader(reader);
@@ -43,6 +42,12 @@ public class fileReader
                 nullInstances[i] = 0;
             }
         }
+        for(int i: nullInstances)
+        {
+        	if(i!=0){
+        		System.out.println(i+" is null");
+			}
+		}
         return nullInstances;
     }
 }
