@@ -3,6 +3,10 @@ package com.csp.model;
 import weka.core.Instances;
 import weka.filters.unsupervised.attribute.Normalize;
 
+/**
+ * @author chiefwithbeef44
+ */
+
 public class SVMModel extends AbstractModel
 {
 	private Normalize norm = new Normalize();

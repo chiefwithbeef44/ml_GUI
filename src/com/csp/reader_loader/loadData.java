@@ -14,8 +14,8 @@ public class loadData
     //loader for data from Weka package
     private FileHelper helper = new FileHelper();
 
-    public String trainPath;
-    public String testPath;
+    public static String trainPath;
+    public static String testPath;
     
     public void inputPath()
     {
@@ -27,7 +27,7 @@ public class loadData
     reader.close();
     }
 
-    public void setTempPath()
+    public static void setTempPath()
     {
         trainPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
         testPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
@@ -38,6 +38,7 @@ public class loadData
         helper.setFilePath(filepath);
         return helper.getFile();
     }
+
     public File train = getFile(trainPath);
     public File test = getFile(testPath);
 }

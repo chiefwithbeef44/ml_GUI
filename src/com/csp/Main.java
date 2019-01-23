@@ -18,20 +18,18 @@ public class Main
     private static KNNModel model;
     private static Instances trainData;
     private static Instances testData;
-    private static double[] output = new double[42001];
 
     public static void main(String[] args) throws Exception
 	{
-        dataLoader.setTempPath();
-        dataLoader.train = new File(dataLoader.trainPath);
-        dataLoader.test = new File(dataLoader.testPath);
+        loadData.setTempPath();
+        dataLoader.train = new File(loadData.trainPath);
+        dataLoader.test = new File(loadData.testPath);
         System.out.println("train can be read: "+dataLoader.train.canRead());
         System.out.println("train file exists: " + dataLoader.train.exists());
         System.out.println("train file can be written to: " + dataLoader.train.canWrite());
         System.out.println("train file path: "+dataLoader.train.getAbsolutePath());
-        //prints a separator
         System.out.println("-------------------------------------------------------------------------------------------");
-        dataLoader.test = new File(dataLoader.testPath);
+        dataLoader.test = new File(loadData.testPath);
         System.out.println("test can be read: "+dataLoader.test.canRead());
         System.out.println("test file exists: " + dataLoader.test.exists());
         System.out.println("test file can be written to: "+ dataLoader.test.canWrite());
@@ -39,17 +37,7 @@ public class Main
 
         trainData = reader.readFile(dataLoader.train);
         testData = reader.readFile(dataLoader.test);
-
         model = new KNNModel(trainData, testData);
-        model.create();
-
-		output = model.train();
-		for(double d: output)
-		{
-			if(d!=0.0)
-			{
-				System.out.println(d);
-			}
-		}
+        Eval.evaluate(model.classifier, trainData, testData);
     }
 }
