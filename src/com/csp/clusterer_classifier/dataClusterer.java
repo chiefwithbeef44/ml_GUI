@@ -12,6 +12,8 @@ import java.io.FileReader;
  * @author chiefwithbeef44
  */
 
+//Clusters the data with k-means clustering
+
 public class dataClusterer
 {
     private BufferedReader readDataFile(String filename)

@@ -14,21 +14,18 @@ import java.io.IOException;
 
 public class fileReader
 {
+    //retruns the Instances from the .arff file
     public Instances readFile(File file) throws IOException
     {
         BufferedReader reader = new BufferedReader(new FileReader(file));
-        System.out.println("successfully instantiated BufferedReader // fileReader:19");
         ArffLoader.ArffReader arff = new ArffLoader.ArffReader(reader);
-        System.out.println("successfully instantiated the ArffReader // fileReader:21");
         Instances data;
-        System.out.println("successfully created Instances var // fileReader:23");
         data = arff.getData();
-        System.out.println("successfully assigned data var to .getData() // fileReader:25");
         data.setClassIndex(data.numAttributes() - 1);
-        System.out.print("successfully set classIndex // fileReader:27");
         return data;
     }
 
+    //checks if instances are null, returns the indices of nulls
     public int[] checkIfNull(Instances instances)
     {
         assert instances != null;
