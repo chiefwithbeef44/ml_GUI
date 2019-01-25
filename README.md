@@ -17,7 +17,7 @@ For Use:
 * Enter the filepath of test.arff: 
 * C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\test.arff
 
-#Data
+# Data
 The data can be found here -> [data].
 Use Weka to convert the data from .csv to .arff. It can be found here -> 
 [weka](https://sourceforge.net/projects/weka/)
