@@ -16,3 +16,7 @@ For Use:
 * C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\train.arff
 * Enter the filepath of test.arff: 
 * C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\test.arff
+
+# Data
+The data can be found here (https://www.kaggle.com/c/digit-recognizer/data)
+Use Weka to convert the data from .csv to .arff. It can be found here (https://sourceforge.net/projects/weka/)
