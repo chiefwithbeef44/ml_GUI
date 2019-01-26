@@ -25,7 +25,7 @@ public class Eval
 			eval.evaluateModel(wekaModel, test);
 			end = System.currentTimeMillis();
 			System.out.println("\tEvaluation took " + (end - start) / 1000.0 + " seconds with an error percentage of "
-					+ eval.errorRate() * 100);
+					+ eval.errorRate());
 			System.gc();
 	}
 }
