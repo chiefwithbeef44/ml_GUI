@@ -12,7 +12,7 @@ For Use:
 8. Wait
 
 * Example: 
-*PLEASE MAKE SURE WHEN USING WINDOWS COPY PATH FEATURE NOT TO INCLUDE THE QUOTATION MARKS
+* PLEASE MAKE SURE WHEN USING WINDOWS COPY PATH FEATURE NOT TO INCLUDE THE QUOTATION MARKS
 * Enter the filepath of train.arff: 
 * C:\Users\RoboKnights\Documents\AP_Compsci_P\Machine_Learning\train.arff
 * Enter the filepath of test.arff: 
