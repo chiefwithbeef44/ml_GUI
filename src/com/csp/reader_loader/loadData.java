@@ -7,6 +7,10 @@ import java.util.Scanner;
 
 /**
  * @author chiefwithbeef44
+ * This class contains the methods used to get the files used to make predictions and the model.
+ * setTempPath is used for development purposes. For any use, it should not be accessed.
+ * inputPath is used to input the paths of the data.
+ *
  */
 
 public class loadData
@@ -17,6 +21,11 @@ public class loadData
 	public static String trainPath;
 	public static String testPath;
 
+	/**
+	 * Scanner is instantiated for input.
+	 * The reader then gets the filepath input by the user.
+	 * That process is repeated for the next file, train and then test, respectively.
+	 */
 	public void inputPath()
 	{
 		Scanner reader = new Scanner(System.in);
@@ -33,6 +42,11 @@ public class loadData
 		testPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
 	}
 
+	/**
+	 * Gets the file specified by the filepath argument.
+	 * @param filepath string parameter used by the FileHelper to get the file.
+	 * @return the file that was specified by the path.
+	 */
 	public File getFile(String filepath)
 	{
 		helper.setFilePath(filepath);
