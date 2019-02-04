@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.Scanner;
 
 /**
- * @author chiefwithbeef44
+ * @author Samuel Blake
  * This class contains the methods used to get the files used to make predictions and the model.
  * setTempPath is used for development purposes. For any use, it should not be accessed.
  * inputPath is used to input the paths of the data.

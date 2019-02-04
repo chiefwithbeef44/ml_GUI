@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * @author chiefwithbeef44
+ * @author Samuel Blake
  * This class is used to get the Instances from the .arff files that are loaded in loadData.
  * the readFile method is used to get the instances from the data.
  */

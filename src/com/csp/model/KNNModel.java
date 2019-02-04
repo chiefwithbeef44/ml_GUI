@@ -7,7 +7,7 @@ import weka.core.Instances;
 import weka.filters.unsupervised.attribute.Normalize;
 
 /**
- * @author chiefwithbeef44
+ * @author Samuel Blake
  * This file is the class containing the model used by the evaluation method found in Eval.
  * In the constructor the arguments are the Instances attained from the fileReader.readFile(File file) method.
  * There is then a normalization filter put on the data to make predictions and training more accurate.
@@ -26,6 +26,14 @@ public class KNNModel extends AbstractModel
 	private IBk knn = new IBk(4);
 	public Classifier classifier = knn;
 
+	/**
+	 * This is the constructor for the KNNModel class. It is necessary for normalizing the data and  setting the classAttribute.
+	 * For each data set, the input format is set and then the data normalized.
+	 * Then, the label attribute is got from the data and set.
+	 * @param train The instances of the training data.
+	 * @param test the instances of the testing data
+	 * @throws Exception thrown by normalization methods setInputFormat and useFilter
+	 */
 	public KNNModel(Instances train, Instances test) throws Exception
     {
     	//Normalizes test data
@@ -68,7 +76,7 @@ public class KNNModel extends AbstractModel
 	 * The test method uses the data that is manipulated in the class constructor and it is therefor vital that this class be instantiated.
 	 * The double variable outputs is set to a new double with the array length the same of the train instances+1 (to avoid an IndexOutOfBoundsException)
 	 * The loop then iterates through each instance and classifies it, assigns is to the proper index, then prints the prediction.
-	 * @return double
+	 * @return double the predictions of the classifier
 	 * @throws Exception due to the exception throwm by the classifyInstance method.
 	 */
 	@Deprecated

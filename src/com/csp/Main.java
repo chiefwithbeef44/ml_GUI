@@ -6,7 +6,7 @@ import com.csp.reader_loader.loadData;
 import weka.core.Instances;
 
 /**
- * @author chiefwithbeef44
+ * @author Samuel Blake
  */
 
 public class Main

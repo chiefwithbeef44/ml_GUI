@@ -1,11 +1,28 @@
 package com.csp;
 
+/*
+ * Copyright (C) 2015 Edward Raff
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
 /**
- * @author Edward Raff
- * @author chiefwithbeef44
+ * @author Edward Raff original code author, modified to show accuracy in percentage.
+ * @author Samuel Blake
  * This class contains the evaluation method.
  * It is used to evaluate the model given the data in the arguments.
  * evaluate will print the time took for training and the time took for evaluation, as well as accuracy (expressed in percentage).

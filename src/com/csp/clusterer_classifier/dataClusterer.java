@@ -9,11 +9,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 /**
- * @author chiefwithbeef44
+ * @author Samuel Blake
  */
 
 //Clusters the data with k-means clustering
-
+@Deprecated
 public class dataClusterer
 {
     private BufferedReader readDataFile(String filename)
