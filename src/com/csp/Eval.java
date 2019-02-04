@@ -19,7 +19,11 @@ package com.csp;
 
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
+import weka.clusterers.ClusterEvaluation;
+import weka.clusterers.Clusterer;
 import weka.core.Instances;
+
+import java.util.Arrays;
 
 /**
  * @author Edward Raff original code author, modified to show accuracy in percentage.
@@ -57,5 +61,26 @@ public class Eval
 			System.out.println("\tEvaluation took " + (end - start) / 1000.0 + " seconds with an accuracy of: " + (100-eval.errorRate()) + "%");
 			System.gc();
 			return (100-eval.errorRate());
+	}
+	public static void evalCluster(Clusterer clusterer, Instances train, Instances test) throws Exception
+	{
+		long start;
+		long end;
+		System.gc();
+		start = System.currentTimeMillis();
+		clusterer.buildClusterer(train);
+		end = System.currentTimeMillis();
+		System.out.println("Training took: " + (end-start) + " ms");
+
+		long begin;
+		long stop;
+		System.gc();
+		ClusterEvaluation evaluation = new ClusterEvaluation();
+		evaluation.setClusterer(clusterer);
+		begin = System.currentTimeMillis();
+		evaluation.evaluateClusterer(test);
+		stop = System.currentTimeMillis();
+		int[] errors = evaluation.getClassesToClusters();
+		System.out.println("Evaluation took " + (stop-begin) + " with errors of: " + Arrays.toString(errors));
 	}
 }

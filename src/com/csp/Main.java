@@ -7,6 +7,7 @@ import weka.core.Instances;
 
 /**
  * @author Samuel Blake
+ * The main class of this program.
  */
 
 public class Main

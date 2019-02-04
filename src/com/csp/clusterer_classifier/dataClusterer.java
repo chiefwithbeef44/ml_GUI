@@ -16,7 +16,7 @@ import java.io.FileReader;
 
 //Clusters the data with k-means clustering
 @Deprecated
-public class dataClusterer
+public class dataClusterer extends AbstractClusterer
 {
     private BufferedReader readDataFile(String filename)
     {
@@ -67,7 +67,7 @@ public class dataClusterer
         }
         return data;
     }
-    public Instances clusterInstances(Instances instances) throws Exception
+    public int[] classifyInstances(Instances instances) throws Exception
     {
         SimpleKMeans kmeans = new SimpleKMeans();
 
@@ -96,6 +96,6 @@ public class dataClusterer
             System.out.printf("Instance %d -> Cluster %d \n", i, clusterNum);
             i++;
         }
-        return data;
+        return classified;
     }
 }
