@@ -52,7 +52,7 @@ public class Main
 		testData = reader.readFile(dataLoader.test);
 
 		//model is instantiated, normalizing the data
-		model = new KNNModel(trainData, testData);
+		model = new KNNModel(trainData, testData, 0);
 
 		//Evaluates the model
 		Eval.evaluate(model.classifier, model.train, model.test);

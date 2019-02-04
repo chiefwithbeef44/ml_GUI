@@ -10,6 +10,8 @@ import java.io.FileReader;
 
 /**
  * @author Samuel Blake
+ * Class is a simple KMeans clusterer of the data as a machine learning method.
+ * Deprecated as it it no longer in use as the main classifier.
  */
 
 //Clusters the data with k-means clustering
@@ -57,7 +59,12 @@ public class dataClusterer
         // This array returns the cluster number (starting with 0) for each instance
         // The array has as many elements as the number of instances
         int[] assignments = kmeans.getAssignments();
-        //System.out.println(data.toString());
+        int i = 0;
+        for (int clusterNum : assignments)
+        {
+            System.out.printf("Instance %d -> Cluster %d \n", i, clusterNum);
+            i++;
+        }
         return data;
     }
     public Instances clusterInstances(Instances instances) throws Exception
@@ -73,7 +80,12 @@ public class dataClusterer
         Instances data = new Instances(instances);
 
         kmeans.buildClusterer(data);
-
+        int[] classified = new int[data.numInstances()+1];
+        for (int i = 0; i<data.numInstances(); i++)
+        {
+                classified[i] = kmeans.clusterInstance(data.get(i));
+                System.out.println(classified[i]);
+        }
         // This array returns the cluster number (starting with 0) for each instance
         // The array has as many elements as the number of instances
         int[] assignments = kmeans.getAssignments();
@@ -81,7 +93,7 @@ public class dataClusterer
         int i = 0;
         for (int clusterNum : assignments)
         {
-            //System.out.printf("Instance %d -> Cluster %d \n", i, clusterNum);
+            System.out.printf("Instance %d -> Cluster %d \n", i, clusterNum);
             i++;
         }
         return data;

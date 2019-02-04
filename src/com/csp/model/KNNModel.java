@@ -23,7 +23,7 @@ public class KNNModel extends AbstractModel
     public Instances train;
     public Instances test;
 	//KNN model
-	private IBk knn = new IBk(4);
+	private IBk knn = new IBk();
 	public Classifier classifier = knn;
 
 	/**
@@ -52,6 +52,25 @@ public class KNNModel extends AbstractModel
 		this.test.setClass(testAttr);
     }
 
+	/**
+	 * The same as the other constructor but can select the attribute and it does not normalize the data.
+	 * It is vital that the class is constructed either with this or the other constructor when put into use.
+	 * @param train is the training data that is to be manipulated 
+	 * @param test is the testing data that is to be manipulated
+	 * @param index is the index of the attribute to be selected.
+	 */
+	public KNNModel(Instances train, Instances test, int index)
+	{
+		this.test = test;
+		this.train = train;
+		//sets the class to the "label" tag
+		test.setClass(test.attribute(index));
+		train.setClass(train.attribute(index));
+		Attribute trainAttr = train.attribute(index);
+		this.train.setClass(trainAttr);
+		Attribute testAttr = test.attribute(index);
+		this.test.setClass(testAttr);
+	}
 	/**
 	 * In create, the classification model is created.
 	 * The method in the Classifier var is used.
@@ -85,11 +104,11 @@ public class KNNModel extends AbstractModel
     	//Number of outputs, creates an array
         double[] outputs = new double[this.train.numInstances()+1];
         //iterates through the instances classifying them
-        for(int i = 0; i<=this.train.numInstances()-1; i++)
+        for(int index = 0; index<=this.train.numInstances()-1; index++)
         {
-        	System.out.println("classifying instance " + i);
-            outputs[i] = classifier.classifyInstance(this.train.get(i));
-            System.out.println(outputs[i]);
+        	System.out.println("classifying instance " + index);
+            outputs[index] = classifier.classifyInstance(this.train.get(index));
+            System.out.println(outputs[index]);
         }
         return outputs;
     }

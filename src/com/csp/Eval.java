@@ -20,13 +20,15 @@ package com.csp;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
 import weka.core.Instances;
+
 /**
  * @author Edward Raff original code author, modified to show accuracy in percentage.
- * @author Samuel Blake
+ * @author Samuel Blake edited the code lightly.
  * This class contains the evaluation method.
  * It is used to evaluate the model given the data in the arguments.
  * evaluate will print the time took for training and the time took for evaluation, as well as accuracy (expressed in percentage).
  */
+
 public class Eval
 {
 	/**
