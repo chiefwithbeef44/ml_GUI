@@ -1,9 +1,8 @@
 package com.csp.clusterer_classifier;
 
+import weka.clusterers.Clusterer;
 import weka.clusterers.FarthestFirst;
 import weka.core.Instances;
-
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author Samuel Blake
@@ -14,6 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class FarthestFirstClusterer extends AbstractClusterer
 {
 	private FarthestFirst farthestFirst = new FarthestFirst();
+	public Clusterer clusterer = farthestFirst;
 
 	/**
 	 * The constructor for this class.
@@ -24,11 +24,11 @@ public class FarthestFirstClusterer extends AbstractClusterer
 	public FarthestFirstClusterer(int numClusters) throws Exception
 	{
 		farthestFirst.setNumClusters(numClusters);
-		farthestFirst.setSeed(ThreadLocalRandom.current().nextInt());
+		farthestFirst.setSeed(10);
 	}
 
 	/**
-	 * This method classifies the instances input
+	 * This method classifies the instances input.
 	 * @param instances the instances are the input to be classified.
 	 * @return int[] the classifier outputs of the clusterer
 	 * @throws Exception thrown by clusterInstance

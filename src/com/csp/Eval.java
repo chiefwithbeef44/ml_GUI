@@ -27,7 +27,7 @@ import java.util.Arrays;
 
 /**
  * @author Edward Raff original code author, modified to show accuracy in percentage.
- * @author Samuel Blake edited the code lightly.
+ * @author Samuel Blake edited the code lightly, added cluster evaluation method.
  * This class contains the evaluation method.
  * It is used to evaluate the model given the data in the arguments.
  * evaluate will print the time took for training and the time took for evaluation, as well as accuracy (expressed in percentage).
@@ -62,6 +62,14 @@ public class Eval
 			System.gc();
 			return (100-eval.errorRate());
 	}
+
+	/**
+	 * This method evaluates the clusterer for error and time.
+	 * @param clusterer The clusterer var to be tested.
+	 * @param train the training data to build the clusterer on
+	 * @param test the testing data to test the clusterer with
+	 * @throws Exception thrown by buildClusterer and evaluateClusterer
+	 */
 	public static void evalCluster(Clusterer clusterer, Instances train, Instances test) throws Exception
 	{
 		long start;
