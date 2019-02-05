@@ -21,11 +21,11 @@ public class KMeansClusterer extends AbstractClusterer
      * This constructor sets all the options for the KMeans algorithm necessary to run.
      * @throws Exception due to the setNumClusters method
      */
-    public KMeansClusterer() throws Exception
+    public KMeansClusterer(int numClusters, boolean preserveORDER) throws Exception
     {
         kmeans.setSeed(10);
-        kmeans.setPreserveInstancesOrder(true);
-        kmeans.setNumClusters(10);
+        kmeans.setPreserveInstancesOrder(preserveORDER);
+        kmeans.setNumClusters(numClusters);
     }
 
     /**
