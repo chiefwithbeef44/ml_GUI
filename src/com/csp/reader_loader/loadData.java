@@ -18,8 +18,8 @@ public class loadData
 	//loader for data from Weka package
 	private FileHelper helper = new FileHelper();
 
-	public static String trainPath;
-	public static String testPath;
+	private static String trainPath;
+	private static String testPath;
 
 	/**
 	 * Scanner is instantiated for input.
@@ -47,7 +47,7 @@ public class loadData
 	 * @param filepath string parameter used by the FileHelper to get the file.
 	 * @return the file that was specified by the path.
 	 */
-	public File getFile(String filepath)
+	private File getFile(String filepath)
 	{
 		helper.setFilePath(filepath);
 		return helper.getFile();

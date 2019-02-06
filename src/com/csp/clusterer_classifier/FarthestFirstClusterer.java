@@ -7,9 +7,7 @@ import weka.core.Instances;
 /**
  * @author Samuel Blake
  * This class is a FarthestFirst clusterer.
- * Deprecated as clusterers are not in use in the program.
  */
-@Deprecated
 public class FarthestFirstClusterer extends AbstractClusterer
 {
 	private FarthestFirst farthestFirst = new FarthestFirst();

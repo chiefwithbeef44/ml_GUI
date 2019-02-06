@@ -10,7 +10,7 @@ import weka.core.Instances;
  * The main class of this program.
  */
 
-public class Main
+public class KNNMain
 {
 	//turns files into Instances
 	private static fileReader reader = new fileReader();

@@ -7,11 +7,10 @@ import weka.core.Instances;
 /**
  * @author Samuel Blake
  * Class is a simple KMeans clusterer of the instances as a machine learning method.
- * Deprecated as it it no longer in use as the main classifier.
  */
 
 //Clusters the instances with k-means clustering
-@Deprecated
+
 public class KMeansClusterer extends AbstractClusterer
 {
     private SimpleKMeans kmeans = new SimpleKMeans();
@@ -21,11 +20,11 @@ public class KMeansClusterer extends AbstractClusterer
      * This constructor sets all the options for the KMeans algorithm necessary to run.
      * @throws Exception due to the setNumClusters method
      */
-    public KMeansClusterer() throws Exception
+    public KMeansClusterer(int numClusters) throws Exception
     {
         kmeans.setSeed(10);
         kmeans.setPreserveInstancesOrder(true);
-        kmeans.setNumClusters(10);
+        kmeans.setNumClusters(numClusters);
     }
 
     /**
