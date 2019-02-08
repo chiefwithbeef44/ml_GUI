@@ -38,23 +38,20 @@ public class KNNMain
 		//Takes file path from console
 		dataLoader.inputPath();
 		//Runs tests
-		System.out.println("train can be read: "+ dataLoader.train.canRead());
+		System.out.println("train can be read: " + dataLoader.train.canRead());
 		System.out.println("train file exists: " + dataLoader.train.exists());
 		System.out.println("train file can be written to: " + dataLoader.train.canWrite());
-		System.out.println("train file path: "+ dataLoader.train.getAbsolutePath());
+		System.out.println("train file path: " + dataLoader.train.getAbsolutePath());
 		System.out.println("-------------------------------------------------------------------------------------------");
-		System.out.println("test can be read: "+ dataLoader.test.canRead());
+		System.out.println("test can be read: " + dataLoader.test.canRead());
 		System.out.println("test file exists: " + dataLoader.test.exists());
-		System.out.println("test file can be written to: "+ dataLoader.test.canWrite());
-		System.out.println("test file path: "+ dataLoader.test.getAbsolutePath());
-
+		System.out.println("test file can be written to: " + dataLoader.test.canWrite());
+		System.out.println("test file path: " + dataLoader.test.getAbsolutePath());
 		//files are turned into instances
 		trainData = reader.readFile(dataLoader.train);
 		testData = reader.readFile(dataLoader.test);
-
 		//model is instantiated, normalizing the data
 		model = new KNNModel(trainData, testData, 0);
-
 		//Evaluates the model
 		Eval.evaluate(model.classifier, model.train, model.test);
 	}

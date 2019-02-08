@@ -36,12 +36,6 @@ public class loadData
 		reader.close();
 	}
 
-	public static void setTempPath()
-	{
-		trainPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
-		testPath = "C:\\Users\\RoboKnights\\Documents\\AP_Compsci_P\\Machine_Learning\\train.arff";
-	}
-
 	/**
 	 * Gets the file specified by the filepath argument.
 	 * @param filepath string parameter used by the FileHelper to get the file.
