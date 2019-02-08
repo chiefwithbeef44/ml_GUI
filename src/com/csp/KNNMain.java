@@ -48,8 +48,8 @@ public class KNNMain
 		System.out.println("test file can be written to: " + dataLoader.test.canWrite());
 		System.out.println("test file path: " + dataLoader.test.getAbsolutePath());
 		//files are turned into instances
-		trainData = reader.readFile(dataLoader.train);
-		testData = reader.readFile(dataLoader.test);
+		trainData = reader.readFile(dataLoader.getFile(loadData.trainPath));
+		testData = reader.readFile(dataLoader.getFile(loadData.testPath));
 		//model is instantiated, normalizing the data
 		model = new KNNModel(trainData, testData, 0);
 		//Evaluates the model
