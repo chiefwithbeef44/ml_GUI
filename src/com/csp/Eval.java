@@ -24,6 +24,7 @@ import weka.clusterers.Clusterer;
 import weka.core.Instances;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * @author Edward Raff original code author, modified to show accuracy in percentage.
@@ -43,7 +44,7 @@ public class Eval
 	 * @return double of the error in percent.
 	 * @throws Exception thrown by buildClassifier, Evaluation instantiation, and evaluateModel.
 	 */
-	public static double evaluate(Classifier wekaModel, Instances train, Instances test) throws Exception
+	public static HashMap<String, Double> evaluate(Classifier wekaModel, Instances train, Instances test) throws Exception
 	{
 			long start;
 			long end;
@@ -51,16 +52,22 @@ public class Eval
 			start = System.currentTimeMillis();
 			wekaModel.buildClassifier(train);
 			end = System.currentTimeMillis();
-			System.out.println("\tTraining took: " + (end - start) / 1000.0);
+			double trainTime = ((end - start) / 1000.0);
+			System.out.println("\tTraining took: " + trainTime);
 
 			System.gc();
 			Evaluation eval = new Evaluation(train);
 			start = System.currentTimeMillis();
 			eval.evaluateModel(wekaModel, test);
 			end = System.currentTimeMillis();
-			System.out.println("\tEvaluation took " + (end - start) / 1000.0 + " seconds with an accuracy of: " + (100-eval.errorRate()) + "%");
+			double testTime = ((end - start) / 1000.0);
+			System.out.println("\tEvaluation took " + testTime + " seconds with an accuracy of: " + (100-eval.errorRate()) + "%");
 			System.gc();
-			return (100-eval.errorRate());
+			HashMap<String, Double> dataPoints = new HashMap<>();
+			dataPoints.put("Error rate: ", (100-eval.errorRate()));
+			dataPoints.put("Train time: ", trainTime);
+			dataPoints.put("Test time: ", trainTime);
+			return  dataPoints;
 	}
 
 	/**

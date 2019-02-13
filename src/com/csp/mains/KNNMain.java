@@ -1,5 +1,6 @@
-package com.csp;
+package com.csp.mains;
 
+import com.csp.Eval;
 import com.csp.model.KNNModel;
 import com.csp.reader_loader.fileReader;
 import com.csp.reader_loader.loadData;
@@ -10,7 +11,7 @@ import weka.core.Instances;
  * The main class of this program.
  */
 
-public class KNNMain
+class KNNMain
 {
 	//turns files into Instances
 	private static fileReader reader = new fileReader();

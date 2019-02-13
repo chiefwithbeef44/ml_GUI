@@ -1,6 +1,7 @@
-package com.csp;
+package com.csp.mains;
 
 
+import com.csp.Eval;
 import com.csp.clusterer_classifier.FarthestFirstClusterer;
 import com.csp.clusterer_classifier.KMeansClusterer;
 import com.csp.reader_loader.fileReader;
@@ -11,7 +12,7 @@ import weka.core.Instances;
  * @author Sam Blake
  * This class is the same thing as the other main class, but it will run with both clustering algorithms instead of KNN.
  */
-public class ClusterMain
+class ClusterMain
 {
 	private static FarthestFirstClusterer FFCluster;
 	private static KMeansClusterer KMCluster;
