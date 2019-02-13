@@ -1,4 +1,6 @@
 # machine_learning
+## @Deprecated 
+* This is an outdated README, please allow me some time to update it for the GUI.
 KNN used to guess handwritten digits in the MNIST database.
 
 For Use:
