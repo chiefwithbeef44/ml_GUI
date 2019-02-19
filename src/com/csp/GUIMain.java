@@ -43,16 +43,16 @@ public class GUIMain
 
 		fileChooser.showOpenDialog(null);
 		File train = new File(fileChooser.getSelectedFile().getAbsolutePath());
-		System.out.println("Test file exists: " + train.exists());
-		System.out.println("Test file path: " + train.getAbsolutePath());
-		System.out.println("Test can be read: " + train.canRead());
+		System.out.println("Train file exists: " + train.exists());
+		System.out.println("Train file path: " + train.getAbsolutePath());
+		System.out.println("Train can be read: " + train.canRead());
 
 		fileChooser.setDialogTitle("Select your test file");
 		fileChooser.showOpenDialog(null);
 		File test = new File(fileChooser.getSelectedFile().getAbsolutePath());
-		System.out.println("Train file exists: " + test.exists());
-		System.out.println("Train file path: " + test.getAbsolutePath());
-		System.out.println("Train can be read: " + test.canRead());
+		System.out.println("Test file exists: " + test.exists());
+		System.out.println("Test file path: " + test.getAbsolutePath());
+		System.out.println("Test can be read: " + test.canRead());
 
 		Instances trainData = r.readFile(train);
 		Instances testData = r.readFile(test);

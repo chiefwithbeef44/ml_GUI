@@ -23,7 +23,7 @@ public class KNNModel extends AbstractModel
     public Instances train;
     public Instances test;
 	//KNN model
-	private IBk knn = new IBk(4);
+	private IBk knn = new IBk(10);
 	public Classifier classifier = knn;
 
 	/**
