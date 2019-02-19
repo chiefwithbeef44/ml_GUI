@@ -23,18 +23,19 @@ public class KNNModel extends AbstractModel
     public Instances train;
     public Instances test;
 	//KNN model
-	private IBk knn = new IBk();
+	private IBk knn = new IBk(4);
 	public Classifier classifier = knn;
 
 	/**
 	 * This is the constructor for the KNNModel class. It is necessary for normalizing the data and  setting the classAttribute.
 	 * For each data set, the input format is set and then the data normalized.
 	 * Then, the label attribute is got from the data and set.
+	 * Note: Using the MNIST data set, and this constructor, training takes ~0.05s
 	 * @param train The instances of the training data.
 	 * @param test the instances of the testing data
 	 * @throws Exception thrown by normalization methods setInputFormat and useFilter
 	 */
-	public KNNModel(Instances train, Instances test) throws Exception
+	public KNNModel(Instances train, Instances test, double index) throws Exception
     {
     	//Normalizes test data
 		Normalize norm = new Normalize();
@@ -44,17 +45,19 @@ public class KNNModel extends AbstractModel
         norm.setInputFormat(train);
         this.train = Normalize.useFilter(train, norm);
         //sets the class to the "label" tag
-        test.setClass(test.attribute(0));
-        train.setClass(train.attribute(0));
-		Attribute trainAttr = train.attribute(0);
+        test.setClass(test.attribute((int)index));
+        train.setClass(train.attribute((int)index));
+		Attribute trainAttr = train.attribute((int)index);
 		this.train.setClass(trainAttr);
-		Attribute testAttr = test.attribute(0);
+		Attribute testAttr = test.attribute((int)index);
 		this.test.setClass(testAttr);
     }
 
 	/**
 	 * The same as the other constructor but can select the attribute and it does not normalize the data.
 	 * It is vital that the class is constructed either with this or the other constructor when put into use.
+	 * Note: Using the MNIST data set, accuracy is around 94.8% and training is ~0.5s
+	 *
 	 * @param train is the training data that is to be manipulated 
 	 * @param test is the testing data that is to be manipulated
 	 * @param index is the index of the attribute to be selected.

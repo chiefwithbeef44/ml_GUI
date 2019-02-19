@@ -6,7 +6,9 @@ import weka.core.Instances;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.io.File;
+import java.util.HashMap;
 
 import com.csp.reader_loader.fileReader;
 
@@ -32,7 +34,9 @@ public class GUIMain
 	 * @param args necessary for main method declaration
 	 * @throws Exception thrown by KNNModel constructor
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception
+	{
+		UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		fileChooser.setFileFilter(filter);
 		fileChooser.setDialogTitle("Select your train file");
@@ -52,7 +56,17 @@ public class GUIMain
 
 		Instances trainData = r.readFile(train);
 		Instances testData = r.readFile(test);
-		KNNModel m = new KNNModel(trainData, testData, 0);
-		System.out.println(Eval.evaluate(m.classifier, trainData, testData));
+		KNNModel m = new KNNModel(trainData, testData, 0.0);
+		HashMap<String, Double> dataPoints = Eval.evaluate(m.classifier, trainData, testData);
+		JFrame data = new JFrame("Results!");
+		JLabel accL = new JLabel("Accuracy Percentage: ");
+		accL.setText(dataPoints.values().toArray()[0].toString());
+		data.add(accL);
+		JLabel trainL = new JLabel("Training time: ");
+		trainL.setText(dataPoints.values().toArray()[1].toString());
+		data.add(trainL);
+		JLabel testL = new JLabel("Testing  time: ");
+		testL.setText(dataPoints.values().toArray()[2].toString());
+		data.add(testL);
 	}
 }

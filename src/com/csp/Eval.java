@@ -65,7 +65,7 @@ public class Eval
 			HashMap<String, Double> dataPoints = new HashMap<>();
 			dataPoints.put("Error rate: ", (100-eval.errorRate()));
 			dataPoints.put("Train time: ", trainTime);
-			dataPoints.put("Test time: ", trainTime);
+			dataPoints.put("Test time: ", testTime);
 			return  dataPoints;
 	}
 
