@@ -6,7 +6,6 @@ import weka.core.Instances;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
-import java.awt.*;
 import java.io.File;
 import java.util.HashMap;
 
@@ -22,7 +21,7 @@ public class GUIMain
 	private static JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getParentDirectory(FileSystemView.getFileSystemView().getHomeDirectory()));
 	private static FileNameExtensionFilter filter = new FileNameExtensionFilter("arff files", "arff");
 	private static fileReader r = new fileReader();
-
+	private static KNNModel model;
 	/**
 	 * This method is the main method for the GUI version of this project.
 	 * It first sets the mode, then the filter to only .arff files (the only ones that can be read)
@@ -59,19 +58,19 @@ public class GUIMain
 		for(int i = 1; i<11; i++)
 		{
 			System.out.println("K value: " + i);
-			KNNModel model = new KNNModel(trainData, testData, 0.0, i);
+			model = new KNNModel(trainData, testData, 0.0, i);
 			System.out.println(Eval.evaluate(model.classifier, trainData, testData));
 		}
-//		HashMap<String, Double> dataPoints = Eval.evaluate(model.classifier, trainData, testData);
-//		JFrame data = new JFrame("Results!");
-//		JLabel accL = new JLabel("Accuracy Percentage: ");
-//		accL.setText(dataPoints.values().toArray()[0].toString());
-//		data.add(accL);
-//		JLabel trainL = new JLabel("Training time: ");
-//		trainL.setText(dataPoints.values().toArray()[1].toString());
-//		data.add(trainL);
-//		JLabel testL = new JLabel("Testing  time: ");
-//		testL.setText(dataPoints.values().toArray()[2].toString());
-//		data.add(testL);
+		HashMap<String, Double> dataPoints = Eval.evaluate(model.classifier, trainData, testData);
+		JFrame data = new JFrame("Results!");
+		JLabel accL = new JLabel("Accuracy Percentage: ");
+		accL.setText(dataPoints.values().toArray()[0].toString());
+		data.add(accL);
+		JLabel trainL = new JLabel("Training time: ");
+		trainL.setText(dataPoints.values().toArray()[1].toString());
+		data.add(trainL);
+		JLabel testL = new JLabel("Testing  time: ");
+		testL.setText(dataPoints.values().toArray()[2].toString());
+		data.add(testL);
 	}
 }

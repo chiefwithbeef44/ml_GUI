@@ -33,6 +33,8 @@ public class KNNModel extends AbstractModel
 	 * Note: Using the MNIST data set, and this constructor, training takes ~0.05s
 	 * @param train The instances of the training data.
 	 * @param test the instances of the testing data
+	 * @param index the index of the attribute to be set
+	 * @param k the k value for the constructor of IBk
 	 * @throws Exception thrown by normalization methods setInputFormat and useFilter
 	 */
 	public KNNModel(Instances train, Instances test, double index, int k) throws Exception
@@ -59,11 +61,12 @@ public class KNNModel extends AbstractModel
 	 * The same as the other constructor but can select the attribute and it does not normalize the data.
 	 * It is vital that the class is constructed either with this or the other constructor when put into use.
 	 * Note: Using the MNIST data set, accuracy is around 94.8% and training is ~0.5s
-	 *
+	 * Deprecated as it provides lower accuracy, is slower, and offers a lesser degree of control.
 	 * @param train is the training data that is to be manipulated 
 	 * @param test is the testing data that is to be manipulated
 	 * @param index is the index of the attribute to be selected.
 	 */
+	@Deprecated
 	public KNNModel(Instances train, Instances test, int index)
 	{
 		this.test = test;
