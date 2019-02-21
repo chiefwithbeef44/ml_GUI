@@ -52,7 +52,7 @@ class KNNMain
 		trainData = reader.readFile(dataLoader.getFile(loadData.trainPath));
 		testData = reader.readFile(dataLoader.getFile(loadData.testPath));
 		//model is instantiated, normalizing the data
-		model = new KNNModel(trainData, testData, 0);
+		model = new KNNModel(trainData, testData, 0, 10);
 		//Evaluates the model
 		Eval.evaluate(model.classifier, model.train, model.test);
 	}
