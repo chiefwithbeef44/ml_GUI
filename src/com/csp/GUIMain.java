@@ -56,17 +56,22 @@ public class GUIMain
 
 		Instances trainData = r.readFile(train);
 		Instances testData = r.readFile(test);
-		KNNModel m = new KNNModel(trainData, testData, 0.0);
-		HashMap<String, Double> dataPoints = Eval.evaluate(m.classifier, trainData, testData);
-		JFrame data = new JFrame("Results!");
-		JLabel accL = new JLabel("Accuracy Percentage: ");
-		accL.setText(dataPoints.values().toArray()[0].toString());
-		data.add(accL);
-		JLabel trainL = new JLabel("Training time: ");
-		trainL.setText(dataPoints.values().toArray()[1].toString());
-		data.add(trainL);
-		JLabel testL = new JLabel("Testing  time: ");
-		testL.setText(dataPoints.values().toArray()[2].toString());
-		data.add(testL);
+		for(int i = 1; i<11; i++)
+		{
+			System.out.println("K value: " + i);
+			KNNModel model = new KNNModel(trainData, testData, 0.0, i);
+			System.out.println(Eval.evaluate(model.classifier, trainData, testData));
+		}
+//		HashMap<String, Double> dataPoints = Eval.evaluate(model.classifier, trainData, testData);
+//		JFrame data = new JFrame("Results!");
+//		JLabel accL = new JLabel("Accuracy Percentage: ");
+//		accL.setText(dataPoints.values().toArray()[0].toString());
+//		data.add(accL);
+//		JLabel trainL = new JLabel("Training time: ");
+//		trainL.setText(dataPoints.values().toArray()[1].toString());
+//		data.add(trainL);
+//		JLabel testL = new JLabel("Testing  time: ");
+//		testL.setText(dataPoints.values().toArray()[2].toString());
+//		data.add(testL);
 	}
 }

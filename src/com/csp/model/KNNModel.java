@@ -23,7 +23,7 @@ public class KNNModel extends AbstractModel
     public Instances train;
     public Instances test;
 	//KNN model
-	private IBk knn = new IBk(10);
+	private IBk knn;
 	public Classifier classifier = knn;
 
 	/**
@@ -35,8 +35,10 @@ public class KNNModel extends AbstractModel
 	 * @param test the instances of the testing data
 	 * @throws Exception thrown by normalization methods setInputFormat and useFilter
 	 */
-	public KNNModel(Instances train, Instances test, double index) throws Exception
+	public KNNModel(Instances train, Instances test, double index, int k) throws Exception
     {
+    	knn = new IBk(k);
+    	classifier = knn;
     	//Normalizes test data
 		Normalize norm = new Normalize();
 		norm.setInputFormat(test);
