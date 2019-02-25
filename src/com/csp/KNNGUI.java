@@ -16,12 +16,13 @@ import com.csp.reader_loader.fileReader;
  * This class is the GUI for the KNNMain class.
  * It brings up a GUI which prompts a selection for a train file, and another prompt for a test file.
  */
-public class GUIMain
+public class KNNGUI
 {
 	private static JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getParentDirectory(FileSystemView.getFileSystemView().getHomeDirectory()));
 	private static FileNameExtensionFilter filter = new FileNameExtensionFilter("arff files", "arff");
 	private static fileReader r = new fileReader();
 	private static KNNModel model;
+
 	/**
 	 * This method is the main method for the GUI version of this project.
 	 * It first sets the mode, then the filter to only .arff files (the only ones that can be read)
@@ -55,12 +56,11 @@ public class GUIMain
 
 		Instances trainData = r.readFile(train);
 		Instances testData = r.readFile(test);
-		for(int i = 1; i<11; i++)
-		{
-			System.out.println("K value: " + i);
-			model = new KNNModel(trainData, testData, 0.0, i);
-			System.out.println(Eval.evaluate(model.classifier, trainData, testData));
-		}
+
+		int k = 1;
+		System.out.println("K value: " + k);
+		model = new KNNModel(trainData, testData, 0.0, k);
+
 		HashMap<String, Double> dataPoints = Eval.evaluate(model.classifier, trainData, testData);
 		JFrame data = new JFrame("Results!");
 		JLabel accL = new JLabel("Accuracy Percentage: ");
