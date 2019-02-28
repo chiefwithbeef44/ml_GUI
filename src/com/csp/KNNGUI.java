@@ -57,9 +57,7 @@ public class KNNGUI
 		Instances trainData = r.readFile(train);
 		Instances testData = r.readFile(test);
 
-		int k = 1;
-		System.out.println("K value: " + k);
-		model = new KNNModel(trainData, testData, 0.0, k);
+		model = new KNNModel(trainData, testData, 0.0, 1500);
 
 		HashMap<String, Double> dataPoints = Eval.evaluate(model.classifier, trainData, testData);
 		JFrame data = new JFrame("Results!");

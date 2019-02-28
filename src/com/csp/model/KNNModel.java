@@ -39,6 +39,7 @@ public class KNNModel extends AbstractModel
 	 */
 	public KNNModel(Instances train, Instances test, double index, int k) throws Exception
     {
+    	System.out.println("K value: " + k);
     	knn = new IBk(k);
     	classifier = knn;
     	//Normalizes test data
@@ -60,8 +61,7 @@ public class KNNModel extends AbstractModel
 	/**
 	 * The same as the other constructor but can select the attribute and it does not normalize the data.
 	 * It is vital that the class is constructed either with this or the other constructor when put into use.
-	 * Note: Using the MNIST data set, accuracy is around 94.8% (for k=1) and training is ~0.5s
-	 * Deprecated as it provides lower accuracy, is slower, and offers a lesser degree of control.
+	 * Note: Using the MNIST data set, accuracy is around 94.8% (for k=1 , default value) and training is ~0.5s
 	 * @param train is the training data that is to be manipulated 
 	 * @param test is the testing data that is to be manipulated
 	 * @param index is the index of the attribute to be selected.

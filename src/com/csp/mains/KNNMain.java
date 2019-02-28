@@ -38,6 +38,7 @@ class KNNMain
 	{
 		//Takes file path from console
 		dataLoader.inputPath();
+
 		//Runs tests
 		System.out.println("train can be read: " + dataLoader.train.canRead());
 		System.out.println("train file exists: " + dataLoader.train.exists());
@@ -48,11 +49,12 @@ class KNNMain
 		System.out.println("test file exists: " + dataLoader.test.exists());
 		System.out.println("test file can be written to: " + dataLoader.test.canWrite());
 		System.out.println("test file path: " + dataLoader.test.getAbsolutePath());
+
 		//files are turned into instances
 		trainData = reader.readFile(dataLoader.getFile(loadData.trainPath));
 		testData = reader.readFile(dataLoader.getFile(loadData.testPath));
 		//model is instantiated, normalizing the data
-		model = new KNNModel(trainData, testData, 0, 10);
+		model = new KNNModel(trainData, testData, 0, 1500);
 		//Evaluates the model
 		Eval.evaluate(model.classifier, model.train, model.test);
 	}
