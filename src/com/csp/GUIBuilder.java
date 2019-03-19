@@ -19,19 +19,17 @@ class GUIBuilder
 
 	void createAndShowGUI()
 	{
-		JFrame data = new JFrame("Results!");
+		dataFrame = new JFrame("Results!");
 		JLabel accL = new JLabel("Accuracy Percentage: ");
 		accL.setText(dataPoints.values().toArray()[0].toString());
-		data.add(accL);
+		dataFrame.add(accL);
 		JLabel trainL = new JLabel("Training time: ");
 		trainL.setText(dataPoints.values().toArray()[1].toString());
-		data.add(trainL);
+		dataFrame.add(trainL);
 		JLabel testL = new JLabel("Testing  time: ");
 		testL.setText(dataPoints.values().toArray()[2].toString());
-		data.add(testL);
-		Dimension d = new Dimension();
-		d.setSize(400, 400);
-		data.setPreferredSize(d);
-		data.setVisible(true);
+		dataFrame.add(testL);
+		dataFrame.setPreferredSize(dimensions);
+		dataFrame.setVisible(true);
 	}
 }

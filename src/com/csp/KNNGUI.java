@@ -60,7 +60,7 @@ public class KNNGUI
 		Instances testData = r.readFile(test);
 
 		model = new KNNModel(trainData, testData, 0.0, 1500);
-		GUIBuilder builder = new GUIBuilder(Eval.evaluate(model.classifier, trainData, testData),128, 128,new JFrame("Results!"));
+		GUIBuilder builder = new GUIBuilder(Eval.evaluate(model.classifier, trainData, testData),400, 400,new JFrame("Results!"));
 		builder.createAndShowGUI();
 	}
 }
