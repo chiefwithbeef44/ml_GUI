@@ -9,6 +9,7 @@ import weka.core.Instances;
 /**
  * @author Samuel Blake
  * The main class of this program.
+ * It's a command line tool here. The gui is KNNGUI.
  */
 
 class KNNMain
@@ -54,7 +55,7 @@ class KNNMain
 		trainData = reader.readFile(dataLoader.getFile(loadData.trainPath));
 		testData = reader.readFile(dataLoader.getFile(loadData.testPath));
 		//model is instantiated, normalizing the data
-		model = new KNNModel(trainData, testData, 0, 1500);
+		model = new KNNModel(trainData, testData, 0, 1600);
 		//Evaluates the model
 		Eval.evaluate(model.classifier, model.train, model.test);
 	}

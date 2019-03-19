@@ -6,6 +6,7 @@ import weka.core.Instances;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+import java.awt.*;
 import java.io.File;
 import java.util.HashMap;
 
@@ -15,6 +16,7 @@ import com.csp.reader_loader.fileReader;
  * @author Sam Blake
  * This class is the GUI for the KNNMain class.
  * It brings up a GUI which prompts a selection for a train file, and another prompt for a test file.
+ * A full run of the program can take anywhere from ~50 mins to 3 hours.
  */
 public class KNNGUI
 {
@@ -58,17 +60,7 @@ public class KNNGUI
 		Instances testData = r.readFile(test);
 
 		model = new KNNModel(trainData, testData, 0.0, 1500);
-
-		HashMap<String, Double> dataPoints = Eval.evaluate(model.classifier, trainData, testData);
-		JFrame data = new JFrame("Results!");
-		JLabel accL = new JLabel("Accuracy Percentage: ");
-		accL.setText(dataPoints.values().toArray()[0].toString());
-		data.add(accL);
-		JLabel trainL = new JLabel("Training time: ");
-		trainL.setText(dataPoints.values().toArray()[1].toString());
-		data.add(trainL);
-		JLabel testL = new JLabel("Testing  time: ");
-		testL.setText(dataPoints.values().toArray()[2].toString());
-		data.add(testL);
+		GUIBuilder builder = new GUIBuilder(Eval.evaluate(model.classifier, trainData, testData),128, 128,new JFrame("Results!"));
+		builder.createAndShowGUI();
 	}
 }
