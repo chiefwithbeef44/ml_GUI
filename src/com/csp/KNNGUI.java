@@ -6,9 +6,7 @@ import weka.core.Instances;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
-import java.awt.*;
 import java.io.File;
-import java.util.HashMap;
 
 import com.csp.reader_loader.fileReader;
 
@@ -61,6 +59,6 @@ public class KNNGUI
 
 		model = new KNNModel(trainData, testData, 0.0, 1500);
 		GUIBuilder builder = new GUIBuilder(Eval.evaluate(model.classifier, trainData, testData),400, 400,new JFrame("Results!"));
-		builder.createAndShowGUI();
+		builder.showResultGUI();
 	}
 }
