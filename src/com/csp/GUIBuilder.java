@@ -9,7 +9,7 @@ import java.util.HashMap;
  * This class contrains all the GUI related parts of the project.
  * It contains a flexible constructor and one method to show the accuracy and other collected data.
  */
-class GUIBuilder
+class GUIBuilder extends JPanel
 {
 	private HashMap<String, Double> dataPoints;
 	private Dimension dimensions;
@@ -29,24 +29,27 @@ class GUIBuilder
 		this.dataFrame =  frame;
 	}
 
+	@Override
+	public void paintComponent(Graphics graphics)
+	{
+		super.paintComponents(graphics);
+		graphics.drawString("Training time: "+dataPoints.values().toArray()[1].toString(), 10, 10);
+		graphics.drawString("Testing time: "+dataPoints.values().toArray()[2].toString(), 10, 20);
+		graphics.drawString("Accuracy percentage: "+dataPoints.values().toArray()[0].toString(), 10, 30);
+	}
+	private GUIBuilder(){}
+
 	/**
 	 * This method takes all of the data given in the instructor,
 	 * and adds them to labels which are then added to the frame specified in the constructor.
 	 */
 	void showResultGUI()
 	{
-		JLabel accL = new JLabel("Accuracy Percentage: ");
-		accL.setText(dataPoints.values().toArray()[0].toString());
-		dataFrame.add(accL);
-		JLabel trainL = new JLabel("Training time: ");
-		trainL.setText(dataPoints.values().toArray()[1].toString());
-		dataFrame.add(trainL);
-		JLabel testL = new JLabel("Testing  time: ");
-		testL.setText(dataPoints.values().toArray()[2].toString());
-		dataFrame.add(testL);
-		dataFrame.add(trainL);
-		dataFrame.add(accL);
-		dataFrame.setPreferredSize(dimensions);
+		dataFrame.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		dataFrame.getContentPane().add(new GUIBuilder());
+		dataFrame.setSize(dimensions);
 		dataFrame.setVisible(true);
+		dataFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dataFrame.setResizable(false);
 	}
 }
