@@ -24,20 +24,30 @@ class GUIBuilder extends JPanel
 	 */
 	GUIBuilder(HashMap<String, Double> data, int height, int width, JFrame frame)
 	{
+		super();
 		this.dataPoints = data;
 		this.dimensions = new Dimension(width, height);
 		this.dataFrame =  frame;
 	}
 
+	/**
+	 * blank constructor for the showResultGUI() method
+	 */
+	private GUIBuilder(){}
+
+	/**
+	 * This method is the core of this class. It writes all of the text to the jFrame.
+	 * @param graphics necessary to override the method in the superclass and draw correctly.
+	 */
 	@Override
 	public void paintComponent(Graphics graphics)
 	{
+		graphics = super.getGraphics().create();
 		super.paintComponents(graphics);
 		graphics.drawString("Training time: "+dataPoints.values().toArray()[1].toString(), 10, 10);
 		graphics.drawString("Testing time: "+dataPoints.values().toArray()[2].toString(), 10, 20);
 		graphics.drawString("Accuracy percentage: "+dataPoints.values().toArray()[0].toString(), 10, 30);
 	}
-	private GUIBuilder(){}
 
 	/**
 	 * This method takes all of the data given in the instructor,
@@ -45,7 +55,6 @@ class GUIBuilder extends JPanel
 	 */
 	void showResultGUI()
 	{
-		dataFrame.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		dataFrame.getContentPane().add(new GUIBuilder());
 		dataFrame.setSize(dimensions);
 		dataFrame.setVisible(true);

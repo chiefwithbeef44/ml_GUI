@@ -41,9 +41,11 @@ public class fileReader
      * Iterates through the instances to make sure that they are not null, then returns one to the list if the instance is null. Else is zero.
      * The second loop then iterates through the first loop and prints out the indices of the null instances.
      * note: does not remove the instances, just identifies them;
+     * deprecated as it should not be used, it's pretty useless, working on a new method.
      * @param instances the instances to be checked are null.
      * @return nullInstances, the indices of the instances that are null
      */
+    @Deprecated
     public int[] checkIfNull(Instances instances)
     {
         assert instances != null;

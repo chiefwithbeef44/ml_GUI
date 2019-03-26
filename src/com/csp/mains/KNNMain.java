@@ -15,9 +15,9 @@ import weka.core.Instances;
 class KNNMain
 {
 	//turns files into Instances
-	private static fileReader reader = new fileReader();
+	private static final fileReader reader = new fileReader();
 	//loads the files
-	private static loadData dataLoader = new loadData();
+	private static final loadData dataLoader = new loadData();
 	//is used for classification, normalizes data
 	private static KNNModel model;
 	//the data

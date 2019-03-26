@@ -16,8 +16,8 @@ class ClusterMain
 {
 	private static FarthestFirstClusterer FFCluster;
 	private static KMeansClusterer KMCluster;
-	private static fileReader reader = new fileReader();
-	private static loadData data = new loadData();
+	private static final fileReader reader = new fileReader();
+	private static final loadData data = new loadData();
 
 	/**
 	 * This is the main function, it runs everything for evaluation of clustering algorithms.

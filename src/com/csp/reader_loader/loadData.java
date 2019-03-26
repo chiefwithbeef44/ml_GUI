@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class loadData
 {
 	//loader for data from Weka package
-	private FileHelper helper = new FileHelper();
+	private final FileHelper helper = new FileHelper();
 
 	public static String trainPath;
 	public static String testPath;
@@ -47,6 +47,6 @@ public class loadData
 		return helper.getFile();
 	}
 
-	public File train = getFile(trainPath);
-	public File test = getFile(testPath);
+	public final File train = getFile(trainPath);
+	public final File test = getFile(testPath);
 }

@@ -10,8 +10,8 @@ import weka.core.Instances;
  */
 public class FarthestFirstClusterer extends AbstractClusterer
 {
-	private FarthestFirst farthestFirst = new FarthestFirst();
-	public Clusterer clusterer = farthestFirst;
+	private final FarthestFirst farthestFirst = new FarthestFirst();
+	public final Clusterer clusterer = farthestFirst;
 
 	/**
 	 * The constructor for this class.

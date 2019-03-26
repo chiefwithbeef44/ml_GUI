@@ -13,8 +13,8 @@ import weka.core.Instances;
 
 public class KMeansClusterer extends AbstractClusterer
 {
-    private SimpleKMeans kmeans = new SimpleKMeans();
-    public Clusterer clusterer = kmeans;
+    private final SimpleKMeans kmeans = new SimpleKMeans();
+    public final Clusterer clusterer = kmeans;
 
     /**
      * This constructor sets all the options for the KMeans algorithm necessary to run.

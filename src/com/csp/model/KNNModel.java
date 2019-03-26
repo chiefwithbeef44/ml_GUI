@@ -23,8 +23,8 @@ public class KNNModel extends AbstractModel
     public Instances train;
     public Instances test;
 	//KNN model
-	private IBk knn;
-	public Classifier classifier = knn;
+	private final IBk knn;
+	public final Classifier classifier;
 
 	/**
 	 * This is the constructor for the KNNModel class. It is necessary for normalizing the data and  setting the classAttribute.
