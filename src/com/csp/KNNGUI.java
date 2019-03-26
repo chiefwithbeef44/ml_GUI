@@ -21,7 +21,6 @@ public class KNNGUI
 	private static JFileChooser fileChooser = new JFileChooser(FileSystemView.getFileSystemView().getParentDirectory(FileSystemView.getFileSystemView().getHomeDirectory()));
 	private static FileNameExtensionFilter filter = new FileNameExtensionFilter("arff files", "arff");
 	private static fileReader r = new fileReader();
-	private static KNNModel model;
 
 	/**
 	 * This method is the main method for the GUI version of this project.
@@ -57,8 +56,10 @@ public class KNNGUI
 		Instances trainData = r.readFile(train);
 		Instances testData = r.readFile(test);
 
-		model = new KNNModel(trainData, testData, 0.0, 1500);
-		GUIBuilder builder = new GUIBuilder(Eval.evaluate(model.classifier, trainData, testData),400, 400,new JFrame("Results!"));
+		GUIBuilder builder = new GUIBuilder(Eval.evaluate(
+				new KNNModel(trainData, testData, 0.0, 1500).classifier, trainData, testData),
+				400, 400,
+				new JFrame("Results!"));
 		builder.showResultGUI();
 	}
 }
