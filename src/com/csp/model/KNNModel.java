@@ -1,5 +1,6 @@
 package com.csp.model;
 
+import org.jetbrains.annotations.NotNull;
 import weka.classifiers.Classifier;
 import weka.classifiers.lazy.IBk;
 import weka.core.Attribute;
@@ -37,7 +38,7 @@ public class KNNModel extends AbstractModel
 	 * @param k the k value for the constructor of IBk
 	 * @throws Exception thrown by normalization methods setInputFormat and useFilter
 	 */
-	public KNNModel(Instances train, Instances test, double index, int k) throws Exception
+	public KNNModel(@NotNull Instances train, @NotNull Instances test, int index, int k) throws Exception
     {
     	System.out.println("K value: " + k);
     	knn = new IBk(k);
@@ -50,11 +51,11 @@ public class KNNModel extends AbstractModel
         norm.setInputFormat(train);
         this.train = Normalize.useFilter(train, norm);
         //sets the class to the "label" tag
-        test.setClass(test.attribute((int)index));
-        train.setClass(train.attribute((int)index));
-		Attribute trainAttr = train.attribute((int)index);
+        test.setClass(test.attribute(index));
+        train.setClass(train.attribute(index));
+		Attribute trainAttr = train.attribute(index);
 		this.train.setClass(trainAttr);
-		Attribute testAttr = test.attribute((int)index);
+		Attribute testAttr = test.attribute(index);
 		this.test.setClass(testAttr);
     }
 
@@ -66,7 +67,7 @@ public class KNNModel extends AbstractModel
 	 * @param test is the testing data that is to be manipulated
 	 * @param index is the index of the attribute to be selected.
 	 */
-	public KNNModel(Instances train, Instances test, int index)
+	public KNNModel(@NotNull Instances train, @NotNull Instances test, int index)
 	{
 		knn = new IBk();
 		classifier = knn;

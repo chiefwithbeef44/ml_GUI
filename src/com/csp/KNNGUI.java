@@ -35,7 +35,7 @@ public class KNNGUI
 	 */
 	public static void main(String[] args) throws Exception
 	{
-		UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 		fileChooser.setFileFilter(filter);
 		fileChooser.setDialogTitle("Select your train file");
@@ -56,11 +56,13 @@ public class KNNGUI
 		Instances trainData = r.readFile(train);
 		Instances testData = r.readFile(test);
 
-		GUIBuilder builder = new GUIBuilder(
-				Eval.evaluate(new KNNModel(trainData, testData, 0.0, 1500).classifier, trainData, testData),
+		new GUIBuilder(
+				//k is usually 1500 for best accuracy.
+				Eval.evaluate(new KNNModel(trainData, testData,0, 1).classifier, trainData, testData),
 				400, 400,
-				new JFrame("Results!")
+				"Results!"
 		);
-		builder.showResultGUI();
+		GUIBuilder.main(null);
+
 	}
 }
