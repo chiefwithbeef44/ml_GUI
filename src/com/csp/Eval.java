@@ -63,7 +63,7 @@ public class Eval
 			double testTime = ((end - start) / 1000.0);
 			System.out.println("\tEvaluation took " + testTime + " seconds with an accuracy of: " + (100-eval.errorRate()) + "%");
 			HashMap<String, Double> dataPoints = new HashMap<>();
-			dataPoints.put("Error rate: ", (100-eval.errorRate()));
+			dataPoints.put("Error rate: ", (100-(eval.errorRate()*100)));
 			dataPoints.put("Train time: ", trainTime);
 			dataPoints.put("Test time: ", testTime);
 			return  dataPoints;
